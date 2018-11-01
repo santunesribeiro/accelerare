@@ -1,0 +1,1268 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Biblioteca de Criptografia &mdash; Documentação do CodeIgniter 3.1.0</title>
+
+
+
+
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
+
+
+
+    <link rel="top" title="Documentação do CodeIgniter 3.1.0" href="../index.html"/>
+        <link rel="up" title="Libraries" href="index.html"/>
+        <link rel="next" title="Classe de Envio de Arquivo" href="file_uploading.html"/>
+        <link rel="prev" title="Classe de Criptografia" href="encrypt.html"/>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div id="nav">
+  <div id="nav_inner">
+
+
+
+      <div id="pulldown-menu" class="ciNav">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bibliotecas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+  </div>
+</div>
+<div id="nav2">
+  <a href="#" id="openToc">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAARgAA/+4ADkFkb2JlAGTAAAAAAf/bAIQABAMDAwMDBAMDBAYEAwQGBwUEBAUHCAYGBwYGCAoICQkJCQgKCgwMDAwMCgwMDQ0MDBERERERFBQUFBQUFBQUFAEEBQUIBwgPCgoPFA4ODhQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU/8AAEQgAKwCaAwERAAIRAQMRAf/EAHsAAQAABwEBAAAAAAAAAAAAAAABAwQFBgcIAgkBAQAAAAAAAAAAAAAAAAAAAAAQAAEDAwICBwYEAgsAAAAAAAIBAwQAEQUSBiEHkROTVNQWGDFBUVIUCHEiMtOUFWGBobHRQlMkZIRVEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDSC+ygkOOaUoKigUCgUCgUCgUCgUCgUCgUCgkuGguIP9FBMFb0Hqg7We+3jlmIqqYFf4ub+/QYlnOR/LqIBKGFUbf8qWv971BytQXXE7Y3Lnm3HsFhp2TaZJAdchRXpIgSpdEJWxJEW3xoKV7F5OMy7JkQn2o7D6w33XGjEAkoiqrJEqIiOIiKuhePCgqp22dyYyS3CyWHnQ5joG61HkRnmnTbaFSMhExRVQRRVJU9iUHjE7ez+fJ0MFipmUNhBV8YUd2SoIV9KkjQla9ltegttBdPLW4/qocL+UTfrMiHW4+P9M71shuyrqaHTcxsl7jegpsji8nh5ZwMvDfgTm0RTjSmjYdFCS6KoOIipdFunCgmNYTMv457MMY6U7iI6oMieDDhRm1VbIhuoOkbqtuK0Hpzb+eZcYZexUxt6UyUqK2cd0SdjtgrhOgijcgERUlJOCIl6CpgbP3blRI8XgMjNARAyKNDfeRBdFDBVUAXgQrqH4pxoJTu2NysY97LP4ac1io5q1InHFeGO24LnVKJuKOkSQ/yKir+rh7aCLG1dzypZQI2FnvTgccYOM3FeN0XWERXAUEFVQgQkUktdLpegm+Td3/Xli/L+S/mYNJIOF9G/wBeLKrZHFb0akG6W1WtQWSg3Dyg5e7V3fipE3O4/wCrktyzYA+ufas2LbZIlmnAT2kvuoN1wft95augilglX/tzP3qCu9O3LL/wV/i5v79BvmTADq14UGu91467Z6U9y0HzH/ncj/U/sT/CgynZG7I2NezpZGUjIycJkYkZSG+uQ81pbBNKLxJfjwoMqZ3/ALYHl35AJ7/cuwHcu5k7r1Q5pHetBjquqVVJWGxj9Zrtcl/Ggy3dHMvauR3HFZj5nHNxSyW5JISYDMoIwx8tFIGHZhPNaykGapr6rUAiicEoMG21lMRj8buPAz8xhJrr7uOeiPTCyAwXUaGR1mgozbTusOsFLEiJ7fbQa/h7gcjy2H3V6xppwDNtUSxCJIqp7valBuWVzJ22xuCROXNNZiJkMtms0DbjUkAZjzoDrTMd9dDRI44ZC2YsrYdKWP2WDT2S3N9dNdlRYrGMYc06IURXSYb0igrpWS485xVNS6nF4rwslkoMwnbpgZLB7bmt5uMweAhDEl4B5uSLzzqTnnyVpW2jaJHRMSIjdDiiotvy3DOE5rYTEbkl5yFn28k7JyG4c7AU2HtLH1uKfaiMPI40CdYbpNtmLdwTSn5rewLNld+7TLdeal4WarWBkbVKBjgdElMJJwAAY5fl4kB3b1fp4XvagsGS3FjJfLzDNtS8aeXx7LzT7TyzByQE5PccRGRC0ZRUDRV6y62vbjagzLmJzS2vuPK43JY6aP1TW6Jz+RIWyFtyC06y3EkiiinAo7YCqfq1AqqnGgsOH3lhZO8d1pmcpB8j5XIm9OYlBJSQ/FSS4427DKO0RC8AlcEMhFdViRR1WDWR5t3WXVuL1d106kG9vdeye2g60+1FDyW0shIcXVpyroXt8I8dfd+NB1vioAdWnD3UF1+gD4UFc6CEKpagxXN43rwJLUHz7yX2c8zokt9uHlsPIhA4aRnnHJTLptIS6CNsY7iASpxUUMkReGpfbQW0vtN5pitvrsN28rwtBD0nc0+/Yft5XhaB6TuaXfsP28rwtA9J3NPv2H7eV4Wgek7mn37D9vK8LQPSdzT79h+3leFoHpO5pd+w/byvC0D0nc0u/Yft5XhaB6TuaXfsP28rwtA9J3NLv2H7eV4Wgek7ml37D9vK8LQPSdzS79h+3leFoHpO5p9+w/byvC0E9r7Reazy2HIYVPxkS/CUHVn26cosxyv2g7h89LYmZSXOenvLEQ1YaQ222RATcQCP8rSGqqA8S02W2pQ6FhMoAIlqCtsnwoCpdKClejI4i3Sgtb+GBxVuNBSFt1pV/RQefLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8utJ/koJ7WCbBU/LQXOPAFq1koK8B0pag90CggtBBf6qB0UDooHRQOigdFA6KB0UDooHRQOigdFA6KB0UDooI0EaBQf//Z" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
+  </a>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar na documentação" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bibliotecas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+
+        <li><a href="index.html">Bibliotecas</a> &raquo;</li>
+
+    <li>Biblioteca de Criptografia</li>
+    <li class="wy-breadcrumbs-aside">
+
+    </li>
+    <div style="float:right;margin-left:5px;" id="closeMe">
+      <img title="Layout Clássico" alt="classic layout" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" />
+    </div>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+
+  <div class="section" id="encryption-library">
+<h1>Biblioteca de Criptografia<a class="headerlink" href="#encryption-library" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">NÃO use esta ou qualquer outra biblioteca de <em>criptografia</em> para o armazenamento de senha do usuário! As senhas devem ser substituídas, e você deve fazer isso via PHP <a class="reference external" href="http://php.net/password">Extensão de Hashing de Senha.</a>.</p>
+</div>
+<p>A Biblioteca de Criptografia fornece criptografia de dados bidirecionais. Para fazê-lo de forma criptográficamente segura, utiliza extensões PHP que, infelizmente, nem sempre estão disponíveis em todos os sistemas. Você deve atender a uma das seguintes dependências para usar esta biblioteca:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://php.net/openssl">OpenSSL</a> (e PHP 5.3.3)</li>
+<li><a class="reference external" href="http://php.net/mcrypt">MCrypt</a> (e <cite>MCRYPT_DEV_URANDOM</cite> disponíveis)</li>
+</ul>
+<p>Se nenhuma das dependências acima for cumprida, simplesmente não podemos oferecer-lhe uma implementação suficientemente boa para atender aos altos padrões exigidos para criptografia adequada.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#using-the-encryption-library" id="id2">Usando a Biblioteca de Criptografia</a><ul>
+<li><a class="reference internal" href="#initializing-the-class" id="id3">Inicializando a Classe</a></li>
+<li><a class="reference internal" href="#default-behavior" id="id4">Comportamento padrão</a></li>
+<li><a class="reference internal" href="#setting-your-encryption-key" id="id5">Configurando sua encryption_key</a></li>
+<li><a class="reference internal" href="#supported-encryption-ciphers-and-modes" id="id6">Cifras e modos de criptografia suportados</a><ul>
+<li><a class="reference internal" href="#portable-ciphers" id="id7">Cifras portáteis</a></li>
+<li><a class="reference internal" href="#driver-specific-ciphers" id="id8">Cifras específicas do driver</a></li>
+<li><a class="reference internal" href="#encryption-modes" id="id9">Modos de encriptação</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#message-length" id="id10">Tamanho da mensagem</a></li>
+<li><a class="reference internal" href="#configuring-the-library" id="id11">Configurando a biblioteca</a></li>
+<li><a class="reference internal" href="#encrypting-and-decrypting-data" id="id12">Criptografar e descriptografar dados</a><ul>
+<li><a class="reference internal" href="#how-it-works" id="id13">Como isso trabalha?</a></li>
+<li><a class="reference internal" href="#using-custom-parameters" id="id14">Usando parâmetros personalizados</a></li>
+<li><a class="reference internal" href="#supported-hmac-authentication-algorithms" id="id15">Algoritmos de autenticação HMAC suportados</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#class-reference" id="id16">Referência da Classe</a></li>
+</ul>
+</div>
+<div class="custom-index container"></div><div class="section" id="using-the-encryption-library">
+<h2><a class="toc-backref" href="#id2">Usando a Biblioteca de Criptografia</a><a class="headerlink" href="#using-the-encryption-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initializing-the-class">
+<h3><a class="toc-backref" href="#id3">Inicializando a Classe</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h3>
+<p>Como a maioria das outras classes em CodeIgniter, a biblioteca de criptografia é inicializada em seu controlador usando o método: <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></tt></p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;encryption&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Uma vez carregado, o objeto da biblioteca Criptografia estará disponível usando:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-behavior">
+<h3><a class="toc-backref" href="#id4">Comportamento padrão</a><a class="headerlink" href="#default-behavior" title="Permalink to this headline">¶</a></h3>
+<p>Por padrão, a Biblioteca de Criptografia usará a cifra AES-128 no modo CBC, usando sua <em>encryption_key</em> configurada e autenticação SHA512 HMAC.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">AES-128 é escolhida tanto porque é provado ser forte e devido à sua ampla disponibilidade em diferentes programas criptográficos e APIs de linguagens de programação.</p>
+</div>
+<p>No entanto sua <em>encryption_key</em> não é usada como está.</p>
+<p>Se você está um pouco familiarizado com a criptografia, você já deve saber que um HMAC também requer uma chave secreta e usar a mesma chave para criptografia e autenticação é uma prática ruim.</p>
+<p>Por isso, duas chaves separadas derivam da sua <em>encryption_key</em> já configurada: uma para criptografia e outra para autenticação. Isso é feito através de uma técnica chamada 
+<a class="reference external" href="http://en.wikipedia.org/wiki/HKDF">HMAC-based Key Derivation Function</a> (HKDF).</p>
+</div>
+<div class="section" id="setting-your-encryption-key">
+<h3><a class="toc-backref" href="#id5">Configurando sua encryption_key</a><a class="headerlink" href="#setting-your-encryption-key" title="Permalink to this headline">¶</a></h3>
+<p>Uma <em>encryption key</em> é uma informação que controla o processo criptográfico e permite que uma seqüência de caracteres de texto simples seja criptografada e, posteriormente, descifrada. É o &#8220;ingrediente&#8221; secreto em todo o processo que permite que você seja o único que é capaz de descriptografar dados que você decidiu esconder dos olhos do público. Depois que uma chave é usada para criptografar dados, essa mesma chave fornece o <strong>único</strong> meio para descriptografá-la, portanto, não só você deve escolher um com cuidado, mas não deve perder ou você também perderá o acesso aos dados.</p>
+<p>Deve-se notar que, para garantir a máxima segurança, essa chave não deve ser tão forte quanto possível, mas também muitas vezes alterada. Esse comportamento, no entanto, raramente é prático ou é possível implementar, e é por isso que o CodeIgniter oferece a capacidade de configurar uma única chave que deve ser usada (quase) de cada vez.</p>
+<p>É evidente que você deve proteger sua chave com cuidado. Caso alguém obtenha acesso à sua chave, os dados serão facilmente descriptografados. Se o seu servidor não estiver totalmente sob seu controle, é impossível garantir a segurança das chaves, então você pode querer pensar com cuidado antes de usá-lo para qualquer coisa que exija alta segurança, como armazenar números de cartão de crédito.</p>
+<p>Sua <strong>chave de criptografia</strong> deve ser tão longa quanto o algoritmo de encyption em uso permitir. Para AES-128, são 128 bits ou 16 bytes (caracteres) longos. Você encontrará uma tabela abaixo que mostra os comprimentos de chave suportados de diferentes cifras.</p>
+<p>A chave deve ser o mais aleatória possível e <strong>não deve ser</strong> uma string de texto normal, nem a saída de uma função de hashing, etc. Para criar uma chave apropriada, você deve usar a biblioteca de criptografia com o método:
+<tt class="docutils literal"><span class="pre">create_key()</span></tt></p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// $key will be assigned a 16-byte (128-bit) random key</span>
+<span class="nv">$key</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">create_key</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>A chave pode ser armazenada em <em>application/config/config.php</em>, ou você pode projetar seu próprio mecanismo de armazenamento e passar a chave dinamicamente ao criptografar/descriptografar.</p>
+<p>Para salvar sua chave, abra o arquivo <em>application/config/config.php</em> e configure:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;encryption_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;YOUR KEY&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Você notará que o método <tt class="docutils literal"><span class="pre">create_key()</span></tt> produz dados binários, que é difícil de lidar (ou seja, uma cópia-colar pode danificá-lo), então você pode usar
+<tt class="docutils literal"><span class="pre">bin2hex()</span></tt>, <tt class="docutils literal"><span class="pre">hex2bin()</span></tt>
+ou codificação Base64 para trabalhar com a chave de uma maneira mais amigável. Por exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Get a hex-encoded representation of the key:</span>
+<span class="nv">$key</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">create_key</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
+
+<span class="c1">// Put the same value in your config with hex2bin(),</span>
+<span class="c1">// so that it is still passed as binary to the library:</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;encryption_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">hex2bin</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">your</span> <span class="nx">hex</span><span class="o">-</span><span class="nx">encoded</span> <span class="nb">key</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="supported-encryption-ciphers-and-modes">
+<span id="ciphers-and-modes"></span><h3><a class="toc-backref" href="#id6">Cifras e modos de criptografia suportados</a><a class="headerlink" href="#supported-encryption-ciphers-and-modes" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Os termos &#8216;cipher&#8217; e &#8216;encryption algorithm&#8217; são intercambiáveis.</p>
+</div>
+<div class="section" id="portable-ciphers">
+<h4><a class="toc-backref" href="#id7">Cifras portáteis</a><a class="headerlink" href="#portable-ciphers" title="Permalink to this headline">¶</a></h4>
+<p>Como o MCrypt e o OpenSSL (também chamados de drivers em todo este documento), cada um suporta diferentes conjuntos de algoritmos de criptografia e, muitas vezes, os implementa de maneiras diferentes, nossa biblioteca de Criptografia foi projetada para usá-los de forma portátil ou, em outras palavras, permite que você use Eles de forma intercambiável, pelo menos para as cifras suportadas pelos dois drivers.</p>
+<p>Também é implementado de forma a combinar as implementações padrão em outras linguagens de programação e bibliotecas.</p>
+<p>Aqui está uma lista dos chamados &#8220cifras portáteis&#8221, onde &#8220CodeIgniter name&#8221 é o valor da string que você deve passar para a biblioteca Criptografia para usar essa cifra:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="18%" />
+<col width="28%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cipher name</th>
+<th class="head">CodeIgniter name</th>
+<th class="head">Key lengths (bits / bytes)</th>
+<th class="head">Supported modes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AES-128 / Rijndael-128</td>
+<td>aes-128</td>
+<td>128 / 16</td>
+<td>CBC, CTR, CFB, CFB8, OFB, ECB</td>
+</tr>
+<tr class="row-odd"><td>AES-192</td>
+<td>aes-192</td>
+<td>192 / 24</td>
+<td>CBC, CTR, CFB, CFB8, OFB, ECB</td>
+</tr>
+<tr class="row-even"><td>AES-256</td>
+<td>aes-256</td>
+<td>256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, ECB</td>
+</tr>
+<tr class="row-odd"><td>DES</td>
+<td>des</td>
+<td>56 / 7</td>
+<td>CBC, CFB, CFB8, OFB, ECB</td>
+</tr>
+<tr class="row-even"><td>TripleDES</td>
+<td>tripledes</td>
+<td>56 / 7, 112 / 14, 168 / 21</td>
+<td>CBC, CFB, CFB8, OFB</td>
+</tr>
+<tr class="row-odd"><td>Blowfish</td>
+<td>blowfish</td>
+<td>128-448 / 16-56</td>
+<td>CBC, CFB, OFB, ECB</td>
+</tr>
+<tr class="row-even"><td>CAST5 / CAST-128</td>
+<td>cast5</td>
+<td>88-128 / 11-16</td>
+<td>CBC, CFB, OFB, ECB</td>
+</tr>
+<tr class="row-odd"><td>RC4 / ARCFour</td>
+<td>rc4</td>
+<td>40-2048 / 5-256</td>
+<td>Stream</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Por causa de como o MCrypt funciona, se você não fornecer uma chave com o comprimento apropriado, você pode acabar usando um algoritmo diferente do configurado, então seja muito cuidadoso com isso!</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Caso não seja claro a partir da tabela acima, Blowfish, CAST5 e RC4 suportam chaves de comprimento variável. Ou seja, qualquer número nos intervalos mostrados é válido, embora em termos de bit que só aconteça em incrementos de 8 bits.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Apesar de CAST5 suportar comprimentos de chave inferiores a 128 bits (16 bytes), na verdade, eles serão apenas preenchidos com o comprimento máximo, conforme especificado em 
+    <a class="reference external" href="http://tools.ietf.org/rfc/rfc2144.txt">RFC 2144</a>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Blowfish suporta comprimentos de teclas tão pequenos quanto 32 bits (4 bytes), mas nossos testes mostraram que apenas comprimentos de 128 bits (16 bytes) ou superiores são suportados corretamente pelo MCrypt e OpenSSL. Também é uma prática ruim usar tais chaves de baixo comprimento de qualquer maneira.</p>
+</div>
+</div>
+<div class="section" id="driver-specific-ciphers">
+<h4><a class="toc-backref" href="#id8">Cifras específicas do driver</a><a class="headerlink" href="#driver-specific-ciphers" title="Permalink to this headline">¶</a></h4>
+<p>Conforme mencionado acima, o MCrypt e o OpenSSL suportam diferentes conjuntos de criptografia criptografia. Por razões de portabilidade e porque não as testamos corretamente, não recomendamos que use as que são específicas do driver, mas, independentemente disso, aqui está uma lista da maioria delas:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="10%" />
+<col width="32%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cipher name</th>
+<th class="head">Driver</th>
+<th class="head">Key lengths (bits / bytes)</th>
+<th class="head">Supported modes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AES-128</td>
+<td>OpenSSL</td>
+<td>128 / 16</td>
+<td>CBC, CTR, CFB, CFB8, OFB, ECB, XTS</td>
+</tr>
+<tr class="row-odd"><td>AES-192</td>
+<td>OpenSSL</td>
+<td>192 / 24</td>
+<td>CBC, CTR, CFB, CFB8, OFB, ECB, XTS</td>
+</tr>
+<tr class="row-even"><td>AES-256</td>
+<td>OpenSSL</td>
+<td>256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, ECB, XTS</td>
+</tr>
+<tr class="row-odd"><td>Rijndael-128</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-even"><td>Rijndael-192</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-odd"><td>Rijndael-256</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-even"><td>GOST</td>
+<td>MCrypt</td>
+<td>256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-odd"><td>Twofish</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-even"><td>CAST-128</td>
+<td>MCrypt</td>
+<td>40-128 / 5-16</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-odd"><td>CAST-256</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-even"><td>Loki97</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-odd"><td>SaferPlus</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-even"><td>Serpent</td>
+<td>MCrypt</td>
+<td>128 / 16, 192 / 24, 256 / 32</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-odd"><td>XTEA</td>
+<td>MCrypt</td>
+<td>128 / 16</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-even"><td>RC2</td>
+<td>MCrypt</td>
+<td>8-1024 / 1-128</td>
+<td>CBC, CTR, CFB, CFB8, OFB, OFB8, ECB</td>
+</tr>
+<tr class="row-odd"><td>RC2</td>
+<td>OpenSSL</td>
+<td>8-1024 / 1-128</td>
+<td>CBC, CFB, OFB, ECB</td>
+</tr>
+<tr class="row-even"><td>Camellia-128</td>
+<td>OpenSSL</td>
+<td>128 / 16</td>
+<td>CBC, CFB, CFB8, OFB, ECB</td>
+</tr>
+<tr class="row-odd"><td>Camellia-192</td>
+<td>OpenSSL</td>
+<td>192 / 24</td>
+<td>CBC, CFB, CFB8, OFB, ECB</td>
+</tr>
+<tr class="row-even"><td>Camellia-256</td>
+<td>OpenSSL</td>
+<td>256 / 32</td>
+<td>CBC, CFB, CFB8, OFB, ECB</td>
+</tr>
+<tr class="row-odd"><td>Seed</td>
+<td>OpenSSL</td>
+<td>128 / 16</td>
+<td>CBC, CFB, OFB, ECB</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Se você deseja usar uma dessas cifras, você deve passar seu nome em minúsculas para a biblioteca de Criptografia.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Você provavelmente notou que todos os cipers AES (e Rijndael-128) também estão listados na lista de cifras portáteis. Isso ocorre porque os drivers suportam diferentes modos para essas cifras. Além disso, é importante notar que AES-128 e Rijndael-128 são na verdade a mesma cifra, mas <strong>somente</strong> quando usado com uma chave de 128 bits.
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">CAST-128/CAST-5 também está listado na lista de criptografia portátil e específica do driver. Isso ocorre porque a implementação do OpenSSL não parece estar funcionando corretamente com tamanhos de chave de 80 bits e menor.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">RC2 é listado como suportado pelo MCrypt e OpenSSL. No entanto, ambos os drivers os implementam de forma diferente e não são portáteis. Provavelmente vale a pena notar que só encontramos uma fonte obscura confirmando que é o MCrypt que não está implementando adequadamente.</p>
+</div>
+</div>
+<div class="section" id="encryption-modes">
+<span id="id1"></span><h4><a class="toc-backref" href="#id9">Modos de criptografia</a><a class="headerlink" href="#encryption-modes" title="Permalink to this headline">¶</a></h4>
+<p>Diferentes modos de criptografia têm características diferentes e servem para diferentes fins. Alguns são mais fortes do que outros, alguns são mais rápidos e alguns oferecem recursos extras. Não vamos aprofundar isso aqui, vamos deixar isso para os especialistas em criptografia. A tabela abaixo é fornecer uma referência informativa breve aos nossos usuários mais experientes. Se você é iniciante, basta manter o modo CBC - é amplamente aceito como forte e seguro para fins gerais.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="9%" />
+<col width="9%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mode name</th>
+<th class="head">CodeIgniter name</th>
+<th class="head">Driver support</th>
+<th class="head">Additional info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CBC</td>
+<td>cbc</td>
+<td>MCrypt, OpenSSL</td>
+<td>A safe default choice</td>
+</tr>
+<tr class="row-odd"><td>CTR</td>
+<td>ctr</td>
+<td>MCrypt, OpenSSL</td>
+<td>Considered as theoretically better than CBC, but not as widely available</td>
+</tr>
+<tr class="row-even"><td>CFB</td>
+<td>cfb</td>
+<td>MCrypt, OpenSSL</td>
+<td>N/A</td>
+</tr>
+<tr class="row-odd"><td>CFB8</td>
+<td>cfb8</td>
+<td>MCrypt, OpenSSL</td>
+<td>Same as CFB, but operates in 8-bit mode (not recommended).</td>
+</tr>
+<tr class="row-even"><td>OFB</td>
+<td>ofb</td>
+<td>MCrypt, OpenSSL</td>
+<td>N/A</td>
+</tr>
+<tr class="row-odd"><td>OFB8</td>
+<td>ofb8</td>
+<td>MCrypt</td>
+<td>Same as OFB, but operates in 8-bit mode (not recommended).</td>
+</tr>
+<tr class="row-even"><td>ECB</td>
+<td>ecb</td>
+<td>MCrypt, OpenSSL</td>
+<td>Ignores IV (not recommended).</td>
+</tr>
+<tr class="row-odd"><td>XTS</td>
+<td>xts</td>
+<td>OpenSSL</td>
+<td>Usually used for encrypting random access data such as RAM or hard-disk storage.</td>
+</tr>
+<tr class="row-even"><td>Stream</td>
+<td>stream</td>
+<td>MCrypt, OpenSSL</td>
+<td>This is not actually a mode, it just says that a stream cipher is being used. Required because of the general cipher+mode initialization process.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="message-length">
+<h3><a class="toc-backref" href="#id10">Tamanho da mensagem</a><a class="headerlink" href="#message-length" title="Permalink to this headline">¶</a></h3>
+<p>Provavelmente é importante que você saiba que uma seqüência de caracteres criptografada geralmente é mais longa do que a string de texto simples original (dependendo da cifra).</p>
+<p>Isso é influenciado pelo próprio algoritmo de cifra, o IV antecipado ao texto criptografado e à mensagem de autenticação HMAC que também é pré-adotada. Além disso, a mensagem criptografada também é codificada em Base64 para que seja segura para armazenamento e transmissão, independentemente de um possível conjunto de caracteres em uso.</p>
+<p>Tenha em mente esta informação ao selecionar seu mecanismo de armazenamento de dados. Cookies, por exemplo, só podem conter 4K de informações.</p>
+</div>
+<div class="section" id="configuring-the-library">
+<span id="configuration"></span><h3><a class="toc-backref" href="#id11">Configurando a Biblioteca</a><a class="headerlink" href="#configuring-the-library" title="Permalink to this headline">¶</a></h3>
+<p>Para usabilidade, desempenho, mas também razões históricas ligadas a nossa antiga 
+<a class="reference internal" href="encrypt.html"><em>Classe de Criptografia</em></a>, 
+a biblioteca Criptografia foi projetada para usar repetidamente o mesmo driver, criptografia criptografia, modo e chave.</p>
+<p>Conforme observado na seção "Comportamento padrão" acima, isso significa usar um driver auto-detectado (OpenSSL tem uma prioridade mais alta), o AES-128 ciper no modo CBC e seu valor <tt class="docutils literal"><span class="pre">$config['encryption_key']</span></tt>.</p>
+<p>Se desejar alterar isso, você precisa usar o método <tt class="docutils literal"><span class="pre">initialize()</span></tt>
+  ele aceita uma matriz associativa de parâmetros, todos os quais são opcionais:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Possible values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>driver</td>
+<td>&#8216;mcrypt&#8217;, &#8216;openssl&#8217;</td>
+</tr>
+<tr class="row-odd"><td>cipher</td>
+<td>Cipher name (see <a class="reference internal" href="#ciphers-and-modes"><em>Supported encryption ciphers and modes</em></a>)</td>
+</tr>
+<tr class="row-even"><td>mode</td>
+<td>Encryption mode (see <a class="reference internal" href="#encryption-modes"><em>Encryption modes</em></a>)</td>
+</tr>
+<tr class="row-odd"><td>key</td>
+<td>Encryption key</td>
+</tr>
+</tbody>
+</table>
+<p>Por exemplo, se você alterasse o algoritmo de criptografia e o modo para AES-256 no modo CTR, isso é o que você deve fazer:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;cipher&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;aes-256&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mode&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ctr&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&lt;a 32-character random string&gt;&#39;</span>
+        <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Note-se que apenas mencionamos que você deseja alterar o modo e o código, mas também incluímos uma chave no exemplo. Como observado anteriormente, é importante que você escolha uma chave com um tamanho adequado para o algoritmo usado.</p>
+<p>Há também a capacidade de mudar o driver, se por algum motivo você tiver ambos, mas quer usar o MCrypt em vez do OpenSSL:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Switch to the MCrypt driver</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;driver&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mcrypt&#39;</span><span class="p">));</span>
+
+<span class="c1">// Switch back to the OpenSSL driver</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;driver&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;openssl&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="encrypting-and-decrypting-data">
+<h3><a class="toc-backref" href="#id12">Criptografia e Descriptografia de dados</a><a class="headerlink" href="#encrypting-and-decrypting-data" title="Permalink to this headline">¶</a></h3>
+<p>Criptografar e descriptografar dados com as configurações de biblioteca já configuradas é simples. Tão simples quanto apenas passar a string para o
+<tt class="docutils literal"><span class="pre">encrypt()</span></tt> e/ou o método <tt class="docutils literal"><span class="pre">decrypt()</span></tt>:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$plain_text</span> <span class="o">=</span> <span class="s1">&#39;This is a plain-text message!&#39;</span><span class="p">;</span>
+<span class="nv">$ciphertext</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="nv">$plain_text</span><span class="p">);</span>
+
+<span class="c1">// Outputs: This is a plain-text message!</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$ciphertext</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>E é isso! A biblioteca de Criptografia fará tudo o necessário para que todo o processo seja criptograficamente seguro. Você não precisa se preocupar com isso.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Ambos os métodos retornarão FALSE em caso de erro. Enquanto para
+<tt class="docutils literal"><span class="pre">encrypt()</span></tt>
+ isso só pode significar configuração incorreta, você deve sempre verificar o valor de retorno de
+<tt class="docutils literal"><span class="pre">decrypt()</span></tt> no código de produção.</p>
+</div>
+<div class="section" id="how-it-works">
+<h4><a class="toc-backref" href="#id13">Como isso trabalha?</a><a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h4>
+<p>Se você deve saber como o processo funciona, aqui está o que acontece:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;encrypt($plain_text)</span></tt><ol class="arabic">
+<li>Derive uma <em>chave de criptografia</em> e uma chave HMAC da sua <em> configurada através do HKDF, usando o algoritmo SHA-512 digest.</li>
+<li>Gerar um vetor de inicialização aleatória (IV).</li>
+<li>Criptografar os dados via AES-128 no modo CBC (ou outra cifra e modo previamente configurados), usando a chave de criptografia derivada acima mencionada e IV.</li>
+<li>Repita o IV para o texto cifrado resultante.</li>
+<li>Base64 - codifica a string resultante, para que possa ser armazenada ou transferida com segurança sem se preocupar com conjuntos de caracteres</li>
+<li>Crie uma mensagem de autenticação SHA-512 HMAC usando a chave HMAC derivada para garantir a integridade dos dados e prependê-la na seqüência Base64.</li>
+</ol>
+</li>
+<li><tt class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;decrypt($ciphertext)</span></tt><ol class="arabic">
+<li>Derive uma chave de criptografia e uma chave HMAC da sua <em>chave de criptografia</em> configurada através do HKDF, usando o algoritmo SHA-512 digest. Como a <em>chave de criptografia</em> configurada é a mesma, isso produzirá o mesmo resultado que no método acima <tt class="docutils literal"><span class="pre">encrypt()</span></tt>
+caso contrário você não poderá descriptografá-lo.</li>
+<li>Verifique se a string é suficientemente longa, separe o HMAC e valide se estiver correto (isso é feito de forma a evitar ataques de temporização novamente). Retorne FALSO se qualquer uma das verificações falhar. Base64 - decodifica a string.</li>
+<li>Base64-decode the string.</li>
+<li>Separe o IV do texto cifrado e desencripte o referido texto cifrado usando esse IV e a chave de criptografia derivada.</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="using-custom-parameters">
+<span id="custom-parameters"></span><h4><a class="toc-backref" href="#id14">Usando parâmetros personalizados</a><a class="headerlink" href="#using-custom-parameters" title="Permalink to this headline">¶</a></h4>
+<p>Digamos que você tenha que interagir com outro sistema que está fora de seu controle e usa outro método para criptografar dados. Um método que certamente não combinará com a seqüência descrita acima e provavelmente também não usará todas as etapas.</p>
+<p>A biblioteca de criptografia permite que você altere a forma como os processos de criptografia e decodificação funcionam, de modo que você possa adaptar facilmente uma solução personalizada para essas situações.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">É possível usar a biblioteca desta maneira, sem configurar uma <em>encryption_key</em> no seu arquivo de configuração.</p>
+</div>
+<p>Tudo o que você precisa fazer é passar uma matriz associativa com alguns parâmetros para o método <tt class="docutils literal"><span class="pre">encrypt()</span></tt> ou <tt class="docutils literal"><span class="pre">decrypt()</span></tt>.
+Aqui está um exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Assume that we have $ciphertext, $key and $hmac_key</span>
+<span class="c1">// from on outside source</span>
+
+<span class="nv">$message</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span>
+        <span class="nv">$ciphertext</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;cipher&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;blowfish&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mode&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cbc&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="nv">$key</span><span class="p">,</span>
+                <span class="s1">&#39;hmac_digest&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sha256&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;hmac_key&#39;</span> <span class="o">=&gt;</span> <span class="nv">$hmac_key</span>
+        <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>No exemplo acima, estamos decodificando uma mensagem que foi criptografada usando a cifra Blowfish no modo CBC e autenticada via um SHM-256 HMAC.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Observe que a &#8216;key&#8217; e &#8216;hmac_key&#8217; são usadas neste exemplo. Ao usar parâmetros personalizados, a criptografia e as teclas HMAC não são derivadas, como o comportamento padrão da biblioteca.</p>
+</div>
+<p>Abaixo está uma lista das opções disponíveis.</p>
+<p>No entanto, a menos que você realmente precise e você sabe o que está fazendo, recomendamos que você não altere o processo de criptografia, pois isso pode afetar a segurança, por isso, faça isso com cautela.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="26%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Default value</th>
+<th class="head">Mandatory / Optional</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cipher</td>
+<td>N/A</td>
+<td>Yes</td>
+<td>Algoritmo de criptografia (veja em <a class="reference internal" href="#ciphers-and-modes"><em>Cifras e modos de criptografia suportados</em></a>).</td>
+</tr>
+<tr class="row-odd"><td>mode</td>
+<td>N/A</td>
+<td>Yes</td>
+<td>Modo de criptografia (veja em <a class="reference internal" href="#encryption-modes"><em>Modos de criptografia</em></a>).</td>
+</tr>
+<tr class="row-even"><td>key</td>
+<td>N/A</td>
+<td>Yes</td>
+<td>Chave de criptografia.</td>
+</tr>
+<tr class="row-odd"><td>hmac</td>
+<td>TRUE</td>
+<td>No</td>
+<td>Quer usar um HMAC. Boleano. Se definido como FALSO, então <em>hmac_digest</em> e <em>hmac_key</em> serão ignorados</td>
+</tr>
+<tr class="row-even"><td>hmac_digest</td>
+<td>sha512</td>
+<td>No</td>
+<td>Algorítmo de mensagem digest HMAC (veja em <a class="reference internal" href="#digests"><em>Algoritmos autenticados HMAC suportados</em></a>).</td>
+</tr>
+<tr class="row-odd"><td>hmac_key</td>
+<td>N/A</td>
+<td>Yes, unless <em>hmac</em> is FALSE</td>
+<td>Chave HMAC.</td>
+</tr>
+<tr class="row-even"><td>raw_data</td>
+<td>FALSE</td>
+<td>No</td>
+<td>Se o texto cifrado deve ser cru. Boleano. Se configurado para TRUE, a codificação e decodificação Base64 não serão executadas e o HMAC não será uma string hexadecimal.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last"><tt class="docutils literal"><span class="pre">encrypt()</span></tt> and <tt class="docutils literal"><span class="pre">decrypt()</span></tt>
+Retornará FALSE se um parâmetro obrigatório não for fornecido ou se um valor fornecido estiver incorreto. Isso inclui <em>hmac_key</em>, a menos que hmac esteja definido como FALSE.</p>
+</div>
+</div>
+<div class="section" id="supported-hmac-authentication-algorithms">
+<span id="digests"></span><h4><a class="toc-backref" href="#id15">Algoritmos autenticados HMAC suportados</a><a class="headerlink" href="#supported-hmac-authentication-algorithms" title="Permalink to this headline">¶</a></h4>
+<p>Para autenticação de mensagens HMAC, a biblioteca Encryption suporta o uso da família de algoritmos SHA-2:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="34%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Algorithm</th>
+<th class="head">Raw length (bytes)</th>
+<th class="head">Hex-encoded length (bytes)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sha512</td>
+<td>64</td>
+<td>128</td>
+</tr>
+<tr class="row-odd"><td>sha384</td>
+<td>48</td>
+<td>96</td>
+</tr>
+<tr class="row-even"><td>sha256</td>
+<td>32</td>
+<td>64</td>
+</tr>
+<tr class="row-odd"><td>sha224</td>
+<td>28</td>
+<td>56</td>
+</tr>
+</tbody>
+</table>
+<p>A razão para não incluir outros algoritmos populares, como MD5 ou SHA1, é que eles não são mais considerados seguros o suficiente e, como tal, não queremos encorajar seu uso. Se você precisa absolutamente usá-los, é fácil fazê-lo através da função nativa do PHP <a class="reference external" href="http://php.net/manual/en/function.hash-hmac.php">hash_hmac()</a>.</p>
+<p>Os algoritmos mais fortes, é claro, serão adicionados no futuro à medida que aparecem e se tornem amplamente disponíveis.</p>
+</div>
+</div>
+</div>
+<div class="section" id="class-reference">
+<h2><a class="toc-backref" href="#id16">Referência de Classe</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="CI_Encryption">
+<em class="property">class </em><tt class="descname">CI_Encryption</tt><a class="headerlink" href="#CI_Encryption" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="CI_Encryption::initialize">
+<tt class="descname">initialize</tt><big>(</big><em>$params</em><big>)</big><a class="headerlink" href="#CI_Encryption::initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$params</strong> (<em>array</em>) &#8211;  Parâmetros de configuração</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">CI_Encryption instance (método de encadeamento)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">CI_Encryption</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Inicializa (configura) a biblioteca para usar um driver, cifra, modo ou chave diferente.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">&#39;mode&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ctr&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Por favor, consulte a seção <a class="reference internal" href="#configuration"><em>Biblioteca de Configuração</em></a> para mais informações detalhadas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Encryption::encrypt">
+<tt class="descname">encrypt</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$params = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encryption::encrypt" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$data</strong> (<em>string</em>) &#8211; Dados para criptografar</li>
+<li><strong>$params</strong> (<em>array</em>) &#8211; Parâmetros opcionais</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Dados criptografados ou FALSE em caso de falha.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Criptografa os dados de entrada e retorna o texto cifrado.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$ciphertext</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="s1">&#39;My secret message&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Por favor, consulte a seção <a class="reference internal" href="#custom-parameters"><em>Usando parâmetros personalizados</em></a> para mais informações detalhadas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Encryption::decrypt">
+<tt class="descname">decrypt</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$params = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encryption::decrypt" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$data</strong> (<em>string</em>) &#8211; Dados para descriptografar</li>
+<li><strong>$params</strong> (<em>array</em>) &#8211; Parâmetros opcionais </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Dados descriptografados ou FALSE em caso de falha</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Decodifica os dados de entrada e o retorna em texto simples.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$ciphertext</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Por favor, consulte a seção <a class="reference internal" href="#custom-parameters"><em>Usando parâmetros personalizados</em></a> para obter informações sobre os parâmetros opcionais.
+on the optional parameters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Encryption::create_key">
+<tt class="descname">create_key</tt><big>(</big><em>$length</em><big>)</big><a class="headerlink" href="#CI_Encryption::create_key" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$length</strong> (<em>int</em>) &#8211; Tamanho da saída</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Uma chave criptográfica pseudo-aleatória com o comprimento especificado, ou FALSE em falha</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Cria uma chave criptográfica ao buscar dados aleatórios das fontes do sistema operacional (i.e. /dev/urandom).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Encryption::hkdf">
+<tt class="descname">hkdf</tt><big>(</big><em>$key</em><span class="optional">[</span>, <em>$digest = 'sha512'</em><span class="optional">[</span>, <em>$salt = NULL</em><span class="optional">[</span>, <em>$length = NULL</em><span class="optional">[</span>, <em>$info = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encryption::hkdf" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; Material da chave de entrada</li>
+<li><strong>$digest</strong> (<em>string</em>) &#8211; Um algoritmo digest de família SHA-2</li>
+<li><strong>$salt</strong> (<em>string</em>) &#8211; Salt opcional</li>
+<li><strong>$length</strong> (<em>int</em>) &#8211; Tamanho da saída opcional</li>
+<li><strong>$info</strong> (<em>string</em>) &#8211; Contexto opcional/informação específica do aplicativo</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Uma chave pseudo-aleatória ou FALSE em caso de falha</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Deriva uma chave de outra, presumivelmente mais fraca.</p>
+<p>Este método é usado internamente para derivar uma criptografia e uma chave HMAC da sua configuração em <em>encryption_key</em>.</p>
+<p>Está disponível publicamente devido ao seu propósito geral. É descrito em <a class="reference external" href="https://tools.ietf.org/rfc/rfc5869.txt">RFC 5869</a>.</p>
+<p>No entanto, ao contrário da descrição no RFC 5869, esta implementação não suporta SHA1.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$hmac_key</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">hkdf</span><span class="p">(</span>
+        <span class="nv">$key</span><span class="p">,</span>
+        <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
+        <span class="k">NULL</span><span class="p">,</span>
+        <span class="k">NULL</span><span class="p">,</span>
+        <span class="s1">&#39;authentication&#39;</span>
+<span class="p">);</span>
+
+<span class="c1">// $hmac_key is a pseudo-random key with a length of 64 bytes</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="file_uploading.html" class="btn btn-neutral float-right" title="Classe de Envio de Arquivo">Próximo <span class="fa fa-arrow-circle-right"></span></a>
+
+
+        <a href="encrypt.html" class="btn btn-neutral" title="Classe de Criptografia"><span class="fa fa-arrow-circle-left"></span> Anterior</a>
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2016, British Columbia Institute of Technology.
+      Última atualização em 26 de julho de 2016.
+    </p>
+  </div>
+
+  Construído com <a href="http://sphinx-doc.org/">Sphinx</a> usando um <a href="https://github.com/snide/sphinx_rtd_theme">tema</a> fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+
+
+</body>
+</html>

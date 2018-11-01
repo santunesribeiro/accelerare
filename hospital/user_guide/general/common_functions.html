@@ -1,0 +1,756 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Funções Comuns &mdash; Documentação do CodeIgniter 3.1.0</title>
+
+
+
+
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
+
+
+
+    <link rel="top" title="Documentação do CodeIgniter 3.1.0" href="../index.html"/>
+        <link rel="up" title="Tópicos Gerais" href="index.html"/>
+        <link rel="next" title="Funções de Compatibilidade" href="compatibility_functions.html"/>
+        <link rel="prev" title="Carregando Recursos Automaticamente" href="autoloader.html"/>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div id="nav">
+  <div id="nav_inner">
+
+
+
+      <div id="pulldown-menu" class="ciNav">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tópicos Gerais</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">Bibliotecas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+  </div>
+</div>
+<div id="nav2">
+  <a href="#" id="openToc">
+    <img src="data:image/jpeg;base64,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" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
+  </a>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar na documentação" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tópicos Gerais</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">Bibliotecas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+
+        <li><a href="index.html">Tópicos Gerais</a> &raquo;</li>
+
+    <li>Funções Comuns</li>
+    <li class="wy-breadcrumbs-aside">
+
+    </li>
+    <div style="float:right;margin-left:5px;" id="closeMe">
+      <img title="Layout Clássico" alt="classic layout" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" />
+    </div>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+
+  <div class="section" id="common-functions">
+<h1>Funções Comuns<a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h1>
+<p>CodeIgniter usa algumas funções para o seu funcionamento definidas globalmente e estão disponíveis para você em qualquer ponto. Estes não exigem o carregamento de bibliotecas ou auxiliares.</p>
+<div class="custom-index container"></div><dl class="function">
+<dt id="is_php">
+<tt class="descname">is_php</tt><big>(</big><em>$version</em><big>)</big><a class="headerlink" href="#is_php" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$version</strong> (<em>string</em>) &#8211; Número da versão</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">VERDADEIRO Se a versão PHP em execução for pelo menos a especificada ou FALSO se não for.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">booleano</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determina se a versão do PHP que está sendo usada é maior do que o número da versão fornecida.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">is_php</span><span class="p">(</span><span class="s1">&#39;5.3&#39;</span><span class="p">))</span>
+<span class="p">{</span>
+        <span class="nv">$str</span> <span class="o">=</span> <span class="nb">quoted_printable_encode</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Retorna TRUE se a versão instalada do PHP for igual ou superior ao número de versão fornecido. Retorna FALSO se a versão instalada do PHP for menor do que o número de versão fornecido.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="is_really_writable">
+<tt class="descname">is_really_writable</tt><big>(</big><em>$file</em><big>)</big><a class="headerlink" href="#is_really_writable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (<em>string</em>) &#8211; Caminho do arquivo</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">VERDADEIRO se o caminho for gravável.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">booleano</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><tt class="docutils literal"><span class="pre">is_writable()</span></tt> retorna VERDADEIRO nos servidores Windows quando você realmente não pode gravar no arquivo, pois o sistema operacional reporta ao PHP como FALSO somente se o atributo somente leitura estiver marcado.</p>
+<p>Esta função determina se um arquivo realmente pode ser gravado, tentando gravar primeiro. Geralmente, apenas é recomendado em plataformas onde esta informação pode não ser confiável.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">is_really_writable</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Eu posso gravar nesse arquivo se eu quiser&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;O arquivo não pode ser gravado&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Veja também <a class="reference external" href="https://bugs.php.net/bug.php?id=54709">PHP bug #54709</a> para mais informações.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="config_item">
+<tt class="descname">config_item</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#config_item" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; Chave do item</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">O valor da chave de configuração, ou NULO se não encontrado.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">Vários tipos</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>A <a class="reference internal" href="../libraries/config.html"><em>Biblioteca de configuração</em></a> é a maneira preferida de acessar informações de configuração, no entanto <tt class="docutils literal"><span class="pre">config_item()</span></tt>
+pode ser usado para recuperar chaves. Veja a documentação da <a class="reference internal" href="../libraries/config.html"><em>Biblioteca de configuração</em></a> para mais informações.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="set_status_header">
+<tt class="descname">set_status_header</tt><big>(</big><em>$code</em><span class="optional">[</span>, <em>$text = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#set_status_header" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$code</strong> (<em>int</em>) &#8211; HTTP Código de status de resposta HTTP</li>
+<li><strong>$text</strong> (<em>string</em>) &#8211; Uma mensagem personalizada para definir com o código de status</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">NADA</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Permite que você defina manualmente um cabeçalho de status do servidor. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">set_status_header</span><span class="p">(</span><span class="mi">401</span><span class="p">);</span>
+<span class="c1">// Define o cabeçalho como: Não autorizado</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Veja aqui</a> para consultar a lista completa de cabeçalhos</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="remove_invisible_characters">
+<tt class="descname">remove_invisible_characters</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$url_encoded = TRUE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#remove_invisible_characters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$str</strong> (<em>string</em>) &#8211; Conjunto de caracteres de entrada</li>
+<li><strong>$url_encoded</strong> (<em>bool</em>) &#8211; Seja para remover caracteres codificados em URL também</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Conjunto de caracteres sanitizados</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">Conjunto de caracteres</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Esta função impede a inserção de caracteres NULL entre caracteres ASCII, como Java \ 0script.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">remove_invisible_characters</span><span class="p">(</span><span class="s1">&#39;Java\\0script&#39;</span><span class="p">);</span>
+<span class="c1">// Retorna: &#39;Javascript&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="html_escape">
+<tt class="descname">html_escape</tt><big>(</big><em>$var</em><big>)</big><a class="headerlink" href="#html_escape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$var</strong> (<em>mixed</em>) &#8211; Variável para escapar (sequência de caracteres ou matriz)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">HTML com sequência de caractere(s) escapado(s)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">Vários tipos</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Esta função funciona como um alias para a função nativa do PHP <tt class="docutils literal"><span class="pre">htmlspecialchars()</span></tt> com a vantagem de ser capaz de aceitar uma matriz com sequência de caracteres.</p>
+<p>É útil na prevenção do Cross Site Scripting (XSS).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="get_mimes">
+<tt class="descname">get_mimes</tt><big>(</big><big>)</big><a class="headerlink" href="#get_mimes" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Uma matriz associativa de tipos de arquivos</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">matriz</td>
+</tr>
+</tbody>
+</table>
+<p>Esta função retorna uma  <em>referência</em> à matriz de MIME em
+<em>application/config/mimes.php</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="is_https">
+<tt class="descname">is_https</tt><big>(</big><big>)</big><a class="headerlink" href="#is_https" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">VERDADEIRO se estiver usando HTTP-over-SSL, FALSO se não</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">booleano</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna TRUE se uma conexão segura (HTTPS) for usada e FALSO em qualquer outro caso (incluindo solicitações não HTTP).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="is_cli">
+<tt class="descname">is_cli</tt><big>(</big><big>)</big><a class="headerlink" href="#is_cli" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">VERDADEIRO se estiver executando atualmente em CLI, FALSO caso contrário</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">booleano</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna TRUE se o aplicativo for executado através da linha de comando e FALSE se não.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Esta função verifica se o valor de <tt class="docutils literal"><span class="pre">PHP_SAPI</span></tt> é &#8216;cli&#8217;
+ou se a constante <tt class="docutils literal"><span class="pre">STDIN</span></tt> foi definida.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="function_usable">
+<tt class="descname">function_usable</tt><big>(</big><em>$function_name</em><big>)</big><a class="headerlink" href="#function_usable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$function_name</strong> (<em>string</em>) &#8211; Nome da função</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">VERDADEIRO se a função puder ser usada, FALSO se não</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">booleano</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna VERDADEIRO se uma função existe e é utilizável, ou FALSO caso contrário</p>
+<p>Esta função executa uma verificação <tt class="docutils literal"><span class="pre">function_exists()</span></tt>
+<cite>e se a extensão Suhosin &lt;http://www.hardened-php.net/suhosin/&gt;</cite> está carregada, verifica se não desabilita a função que está sendo verificada.</p>
+<p>É útil se você deseja verificar a disponibilidade de funções como <tt class="docutils literal"><span class="pre">eval()</span></tt> e <tt class="docutils literal"><span class="pre">exec()</span></tt>
+, que são perigosas e podem ser desativadas em servidores com políticas de segurança altamente restritivas.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Esta função foi introduzida porque Suhosin terminou a execução do script, mas isso acabou por ser um bug. Uma correção está disponível há algum tempo (versão 0.9.34), mas infelizmente ainda não foi lançado.</p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="compatibility_functions.html" class="btn btn-neutral float-right" title="Funções de Compatibilidade">Próximo <span class="fa fa-arrow-circle-right"></span></a>
+
+
+        <a href="autoloader.html" class="btn btn-neutral" title="Carregando Recursos Automaticamente"><span class="fa fa-arrow-circle-left"></span> Anterior</a>
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2016, British Columbia Institute of Technology.
+      Última atualização em 26 de julho de 2016.
+    </p>
+  </div>
+
+  Construído com <a href="http://sphinx-doc.org/">Sphinx</a> usando um <a href="https://github.com/snide/sphinx_rtd_theme">tema</a> fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+
+
+</body>
+</html>

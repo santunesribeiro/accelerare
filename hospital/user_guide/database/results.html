@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gerando Resultados de Consulta &mdash; Documentação do CodeIgniter 3.1.0</title>
+
+
+
+
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
+
+
+
+    <link rel="top" title="Documentação do CodeIgniter 3.1.0" href="../index.html"/>
+        <link rel="up" title="Referência de Banco de Dados" href="index.html"/>
+        <link rel="next" title="Funções Auxiliares para Consultas" href="helpers.html"/>
+        <link rel="prev" title="Consultas" href="queries.html"/>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div id="nav">
+  <div id="nav_inner">
+
+
+
+      <div id="pulldown-menu" class="ciNav">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">Bibliotecas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Referência de Banco de Dados</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queries.html">Executando Consultas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+  </div>
+</div>
+<div id="nav2">
+  <a href="#" id="openToc">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAARgAA/+4ADkFkb2JlAGTAAAAAAf/bAIQABAMDAwMDBAMDBAYEAwQGBwUEBAUHCAYGBwYGCAoICQkJCQgKCgwMDAwMCgwMDQ0MDBERERERFBQUFBQUFBQUFAEEBQUIBwgPCgoPFA4ODhQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU/8AAEQgAKwCaAwERAAIRAQMRAf/EAHsAAQAABwEBAAAAAAAAAAAAAAABAwQFBgcIAgkBAQAAAAAAAAAAAAAAAAAAAAAQAAEDAwICBwYEAgsAAAAAAAIBAwQAEQUSBiEHkROTVNQWGDFBUVIUCHEiMtOUFWGBobHRQlMkZIRVEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDSC+ygkOOaUoKigUCgUCgUCgUCgUCgUCgUCgkuGguIP9FBMFb0Hqg7We+3jlmIqqYFf4ub+/QYlnOR/LqIBKGFUbf8qWv971BytQXXE7Y3Lnm3HsFhp2TaZJAdchRXpIgSpdEJWxJEW3xoKV7F5OMy7JkQn2o7D6w33XGjEAkoiqrJEqIiOIiKuhePCgqp22dyYyS3CyWHnQ5joG61HkRnmnTbaFSMhExRVQRRVJU9iUHjE7ez+fJ0MFipmUNhBV8YUd2SoIV9KkjQla9ltegttBdPLW4/qocL+UTfrMiHW4+P9M71shuyrqaHTcxsl7jegpsji8nh5ZwMvDfgTm0RTjSmjYdFCS6KoOIipdFunCgmNYTMv457MMY6U7iI6oMieDDhRm1VbIhuoOkbqtuK0Hpzb+eZcYZexUxt6UyUqK2cd0SdjtgrhOgijcgERUlJOCIl6CpgbP3blRI8XgMjNARAyKNDfeRBdFDBVUAXgQrqH4pxoJTu2NysY97LP4ac1io5q1InHFeGO24LnVKJuKOkSQ/yKir+rh7aCLG1dzypZQI2FnvTgccYOM3FeN0XWERXAUEFVQgQkUktdLpegm+Td3/Xli/L+S/mYNJIOF9G/wBeLKrZHFb0akG6W1WtQWSg3Dyg5e7V3fipE3O4/wCrktyzYA+ufas2LbZIlmnAT2kvuoN1wft95augilglX/tzP3qCu9O3LL/wV/i5v79BvmTADq14UGu91467Z6U9y0HzH/ncj/U/sT/CgynZG7I2NezpZGUjIycJkYkZSG+uQ81pbBNKLxJfjwoMqZ3/ALYHl35AJ7/cuwHcu5k7r1Q5pHetBjquqVVJWGxj9Zrtcl/Ggy3dHMvauR3HFZj5nHNxSyW5JISYDMoIwx8tFIGHZhPNaykGapr6rUAiicEoMG21lMRj8buPAz8xhJrr7uOeiPTCyAwXUaGR1mgozbTusOsFLEiJ7fbQa/h7gcjy2H3V6xppwDNtUSxCJIqp7valBuWVzJ22xuCROXNNZiJkMtms0DbjUkAZjzoDrTMd9dDRI44ZC2YsrYdKWP2WDT2S3N9dNdlRYrGMYc06IURXSYb0igrpWS485xVNS6nF4rwslkoMwnbpgZLB7bmt5uMweAhDEl4B5uSLzzqTnnyVpW2jaJHRMSIjdDiiotvy3DOE5rYTEbkl5yFn28k7JyG4c7AU2HtLH1uKfaiMPI40CdYbpNtmLdwTSn5rewLNld+7TLdeal4WarWBkbVKBjgdElMJJwAAY5fl4kB3b1fp4XvagsGS3FjJfLzDNtS8aeXx7LzT7TyzByQE5PccRGRC0ZRUDRV6y62vbjagzLmJzS2vuPK43JY6aP1TW6Jz+RIWyFtyC06y3EkiiinAo7YCqfq1AqqnGgsOH3lhZO8d1pmcpB8j5XIm9OYlBJSQ/FSS4427DKO0RC8AlcEMhFdViRR1WDWR5t3WXVuL1d106kG9vdeye2g60+1FDyW0shIcXVpyroXt8I8dfd+NB1vioAdWnD3UF1+gD4UFc6CEKpagxXN43rwJLUHz7yX2c8zokt9uHlsPIhA4aRnnHJTLptIS6CNsY7iASpxUUMkReGpfbQW0vtN5pitvrsN28rwtBD0nc0+/Yft5XhaB6TuaXfsP28rwtA9J3NPv2H7eV4Wgek7mn37D9vK8LQPSdzT79h+3leFoHpO5pd+w/byvC0D0nc0u/Yft5XhaB6TuaXfsP28rwtA9J3NLv2H7eV4Wgek7ml37D9vK8LQPSdzS79h+3leFoHpO5p9+w/byvC0E9r7Reazy2HIYVPxkS/CUHVn26cosxyv2g7h89LYmZSXOenvLEQ1YaQ222RATcQCP8rSGqqA8S02W2pQ6FhMoAIlqCtsnwoCpdKClejI4i3Sgtb+GBxVuNBSFt1pV/RQefLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8utJ/koJ7WCbBU/LQXOPAFq1koK8B0pag90CggtBBf6qB0UDooHRQOigdFA6KB0UDooHRQOigdFA6KB0UDooI0EaBQf//Z" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
+  </a>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar na documentação" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">Bibliotecas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Referência de Banco de Dados</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queries.html">Executando Consultas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+
+        <li><a href="index.html">Referência de Banco de Dados</a> &raquo;</li>
+
+    <li>Gerando Resultados de Consulta</li>
+    <li class="wy-breadcrumbs-aside">
+
+    </li>
+    <div style="float:right;margin-left:5px;" id="closeMe">
+      <img title="Layout Clássico" alt="classic layout" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" />
+    </div>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+
+  <div class="section" id="generating-query-results">
+<h1>Gerando Resultados de Consulta<a class="headerlink" href="#generating-query-results" title="Permalink to this headline">¶</a></h1>
+<p>Existem várias maneiras de se gerar resultados de consultas:</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#result-arrays" id="id1">Vários Resultados em um Array</a></li>
+<li><a class="reference internal" href="#result-rows" id="id2">Resultado Único</a></li>
+<li><a class="reference internal" href="#custom-result-objects" id="id3">Resultados Personalizados como Objetos</a></li>
+<li><a class="reference internal" href="#result-helper-methods" id="id4">Funções Auxiliares de Resultados</a></li>
+<li><a class="reference internal" href="#class-reference" id="id5">Referência da Classe</a></li>
+</ul>
+</div>
+<div class="section" id="result-arrays">
+<h2><a class="toc-backref" href="#id1">Vários Resultados em um Array</a><a class="headerlink" href="#result-arrays" title="Permalink to this headline">¶</a></h2>
+<p><strong>result()</strong></p>
+<p>Este método retorna o resultado da consulta como um array de <strong>objetos</strong>, ou
+<strong>um array vazio</strong> em caso de falha. Normalmente você vai usar este método em uma iteração com foreach, como esta:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+  
+  <span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
+  <span class="p">{</span>
+          <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+          <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+          <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>O método acima é um atalho para <tt class="docutils literal"><span class="pre">result_object()</span></tt>.</p>
+<p>Você também pode passar uma string para <tt class="docutils literal"><span class="pre">result()</span></tt> informando a classe a ser instanciada para o objeto resultante do foreach (observação: esta classe deve estar carregada)</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users;&quot;</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$user</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="c1">// acessar atributos</span>
+        <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">reverse_name</span><span class="p">();</span> <span class="c1">// ou métodos definidos na classe &#39;User&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>result_array()</strong></p>
+<p>Este método retorna como resultado da consulta um array puro, ou um array vazio quando nenhum resultado é encontrado. Normalmente você vai usar isto em uma iteração através do foreach, como esta:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result_array</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">];</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="result-rows">
+<h2><a class="toc-backref" href="#id2">Resultado Único</a><a class="headerlink" href="#result-rows" title="Permalink to this headline">¶</a></h2>
+<p><strong>row()</strong></p>
+<p>Este método retorna uma linha em um único resultado. Se sua consulta tiver mais que um resultado, irá retornar a primeira linha. O resultado é retornado como um <strong>objeto</strong>. Aqui está um exemplo de uso:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+
+<span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$row</span><span class="p">))</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Se você quer uma linha específica retornada, você pode informar o número da linha como um digito no primeiro parâmetro:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Você também pode adicionar uma String como segundo parâmetro, que é  o nome da classe em que a linha deverá ser instanciada:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users LIMIT 1;&quot;</span><span class="p">);</span>
+<span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="c1">// access attributes</span>
+<span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">reverse_name</span><span class="p">();</span> <span class="c1">// ou métoos definidos para a classe &#39;User&#39;</span>
+</pre></div>
+</div>
+<p><strong>row_array()</strong></p>
+<p>Idêntico ao método <tt class="docutils literal"><span class="pre">row()</span></tt> acima, exceto que o resultado é retornado como um array. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+
+<span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row_array</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$row</span><span class="p">))</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">];</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Se você quer uma linha específica retornada, você pode informar o número da linha como um  dígito no primeiro parâmetro:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row_array</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Além disso,  você pode navegar (para frente/para trás/primeiro/último) nos seus resultados utilizando estas variações:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>$row = $query-&gt;first_row()</strong> // primeira linha</div>
+<div class="line"><strong>$row = $query-&gt;last_row()</strong> // última linha</div>
+<div class="line"><strong>$row = $query-&gt;next_row()</strong> // próxima linha</div>
+<div class="line"><strong>$row = $query-&gt;previous_row()</strong> // linha anterior</div>
+</div>
+</div></blockquote>
+<p>Por padrão retorna um objeto a menos que você informa a palavra &#8220;array&#8221; no parâmetro:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>$row = $query-&gt;first_row(&#8216;array&#8217;)</strong></div>
+<div class="line"><strong>$row = $query-&gt;last_row(&#8216;array&#8217;)</strong></div>
+<div class="line"><strong>$row = $query-&gt;next_row(&#8216;array&#8217;)</strong></div>
+<div class="line"><strong>$row = $query-&gt;previous_row(&#8216;array&#8217;)</strong></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Todos os métodos acima vão carregar todos os resultados na memória
+(pré-processamento). Use <tt class="docutils literal"><span class="pre">unbuffered_row()</span></tt> para processamento de grandes quantidades de registros.</p>
+</div>
+<p><strong>unbuffered_row()</strong></p>
+<p>Este método retorna uma única linha como resultado, sem pré-processar todo resultado na memória como o método <tt class="docutils literal"><span class="pre">row()</span></tt> faz. Se sua query tem mais do que uma linha de resultado, irá retornar a linha atual e mover o ponteiro interno de dados para frente.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">())</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Você pode opcionalmente passar &#8216;object&#8217; (padrão) ou &#8216;array&#8217; como parâmetro para especificar o tipo do valor retornado:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">();</span>               <span class="c1">// objeto</span>
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">);</span>       <span class="c1">// objeto</span>
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">);</span>        <span class="c1">// array associativo</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-result-objects">
+<h2><a class="toc-backref" href="#id3">Resultado Como Objetos Personalizados</a><a class="headerlink" href="#custom-result-objects" title="Permalink to this headline">¶</a></h2>
+<p>Você pode ter os resultados retornados como um instância de uma classe ao invés de uma <tt class="docutils literal"><span class="pre">stdClass</span></tt> ou array, como os métodos <tt class="docutils literal"><span class="pre">result()</span></tt> e <tt class="docutils literal"><span class="pre">result_array()</span></tt>
+permitem. Isto requer que a classe já esteja carregada na memória.
+O objeto vai ter todos os valores retornados do banco de dados definidos como propriedades.
+Se eles já foram declarados e não são públicos, então você deve providenciar um método <tt class="docutils literal"><span class="pre">__set()</span></tt> para permitir que eles sejam definidos.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+
+        <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$email</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$username</span><span class="p">;</span>
+
+        <span class="k">protected</span> <span class="nv">$last_login</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">last_login</span><span class="p">(</span><span class="nv">$format</span><span class="p">)</span>
+        <span class="p">{</span>
+                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">last_login</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$format</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">__set</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span>
+        <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$name</span> <span class="o">===</span> <span class="s1">&#39;last_login&#39;</span><span class="p">)</span>
+                <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">last_login</span> <span class="o">=</span> <span class="nx">DateTime</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+        <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">))</span>
+                <span class="p">{</span>
+                        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">;</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Além dos dois métodos listados acima, os seguintes métodos também podem
+  ter um nome de classe para retornar o resultado como: <tt class="docutils literal"><span class="pre">first_row()</span></tt>, <tt class="docutils literal"><span class="pre">last_row()</span></tt>,
+<tt class="docutils literal"><span class="pre">next_row()</span></tt>, e <tt class="docutils literal"><span class="pre">previous_row()</span></tt>.</p>
+<p><strong>custom_result_object()</strong></p>
+<p>Retorna todos os resultados como um array de instâncias de uma classe requerida.
+O único parâmetro é o nome da classe a ser instanciada.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+
+<span class="nv">$rows</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">custom_result_object</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$rows</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">last_login</span><span class="p">(</span><span class="s1">&#39;Y-m-d&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>custom_row_object()</strong></p>
+<p>Retorna um único registro dos resultados de sua consulta/query. O primeiro parâmetro é o número da linha
+do resultado. O segundo parâmetro é o nome da classe a ser instanciada.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+
+<span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">custom_row_object</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$row</span><span class="p">))</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">;</span>   <span class="c1">// access attributes</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">last_login</span><span class="p">(</span><span class="s1">&#39;Y-m-d&#39;</span><span class="p">);</span>   <span class="c1">// access class methods</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Você também pode usar o método<tt class="docutils literal"><span class="pre">row()</span></tt> exatamente do mesmo jeito.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">custom_row_object</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="result-helper-methods">
+<h2><a class="toc-backref" href="#id4">Funções Auxiliares de Resultados</a><a class="headerlink" href="#result-helper-methods" title="Permalink to this headline">¶</a></h2>
+<p><strong>num_rows()</strong></p>
+<p>O número de linhas retornado pela consulta/query. Nota: Neste exemplo, $query
+é a variável ao qual o resultado da consulta está associado:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM my_table&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">num_rows</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Nem todos os drivers de banco possuem uma forma nativa de se obter o número
+  total de linhas de um conjunto de resultados. Quando este é o caso, todos 
+  os dados são pré-processados e o método <tt class="docutils literal"><span class="pre">count()</span></tt> é manualmente chamado no 
+  array resultante em ordem para alcançar o mesmo resultado.</p>
+</div>
+<p><strong>num_fields()</strong></p>
+<p>O número de CAMPOS (colunas) retornado pela consulta/query. Tenha certeza de chamar
+  o método usando o objeto resultante de sua consulta:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM my_table&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">num_fields</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>free_result()</strong></p>
+<p>Libera a memória associada com o resultado e deleta o ID do recurso resultante.
+  Normalmente o PHP libera sua memória automaticamente no fim da execução do script.
+  Todavia, se você está executando um conjunto de consultas/queries em um script particular
+  você deve querer liberar o resultado depois de cada resultado de consulta ter sido gerado
+  em ordem para cortar o consumo de memória.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT title FROM my_table&#39;</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">free_result</span><span class="p">();</span>  <span class="c1">// O objeto resultado $query  não estará mais disponível</span>
+
+<span class="nv">$query2</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT name FROM some_table&#39;</span><span class="p">);</span>
+
+<span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query2</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="nv">$query2</span><span class="o">-&gt;</span><span class="na">free_result</span><span class="p">();</span> <span class="c1">// O objeto resultado $query2  não estará mais disponível</span>
+</pre></div>
+</div>
+<p><strong>data_seek()</strong></p>
+<p>Este método define o ponteiro interno para a próxima linha para ser
+buscado. Ele só é útil em combinação com <tt class="docutils literal"><span class="pre">unbuffered_row()</span></tt>.</p>
+<p>Ele aceita um valor inteiro positivo, cujo padrão é 0 e retorna TRUE em caso de sucesso ou FALSO em caso de falha.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT `field_name` FROM `table_name`&#39;</span><span class="p">);</span>
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">data_seek</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// Pular as 5 primeiras linhas</span>
+<span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Nem todos os drivers de banco de dados suportam este recurso e vão retornar FALSE.
+Mais notavelmente - você não poderá usá-lo com PDO.</p>
+</div>
+</div>
+<div class="section" id="class-reference">
+<h2><a class="toc-backref" href="#id5">Referência da Classe</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="CI_DB_result">
+<em class="property">classe </em><tt class="descname">CI_DB_result</tt><a class="headerlink" href="#CI_DB_result" title="Link permanente para esta definição">¶</a></dt>
+<dd><dl class="method">
+<dt id="CI_DB_result::result">
+<tt class="descname">result</tt><big>(</big><span class="optional">[</span><em>$type = 'object'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::result" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo dos resultados requesitados - array, object, ou nome da classe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Array contendo as linhas buscadas</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Um empacotador para os métodos <tt class="docutils literal"><span class="pre">result_array()</span></tt>, <tt class="docutils literal"><span class="pre">result_object()</span></tt>
+e <tt class="docutils literal"><span class="pre">custom_result_object()</span></tt>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-arrays">Arrays de resultados</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::result_array">
+<tt class="descname">result_array</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_result::result_array" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array contendo as linhas buscadas</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna os resultados da query como um array de linhas, onde cada linha é em si um array associativo.</p>
+<p>Uso: veja <a class="reference internal" href="#result-arrays">Arraysde Resultados</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::result_object">
+<tt class="descname">result_object</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_result::result_object" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array contendo as linhas buscadas</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna os resultados da query como um array de linhas, onde cada linha é um objeto do tipo <tt class="docutils literal"><span class="pre">stdClass</span></tt>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-arrays">Arrays de Resultados</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::custom_result_object">
+<tt class="descname">custom_result_object</tt><big>(</big><em>$class_name</em><big>)</big><a class="headerlink" href="#CI_DB_result::custom_result_object" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$class_name</strong> (<em>string</em>) &#8211; Nome da classe para as linhas resultantes</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Array contendo as linhas buscadas</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna a query resultante como um array de linhas, onde cada linha é uma instância da classe especificada.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::row">
+<tt class="descname">row</tt><big>(</big><span class="optional">[</span><em>$n = 0</em><span class="optional">[</span>, <em>$type = 'object'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::row" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha dos resultados da query que deve ser retornada</li>
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo do resultado requisitado - array, object, ou nome da classe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se ela não existir</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Um empacotador para os métodos <tt class="docutils literal"><span class="pre">row_array()</span></tt>, <tt class="docutils literal"><span class="pre">row_object()</span> <span class="pre">e</span>
+<span class="pre">``custom_row_object()</span></tt>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas Resultantes</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::unbuffered_row">
+<tt class="descname">unbuffered_row</tt><big>(</big><span class="optional">[</span><em>$type = 'object'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::unbuffered_row" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo do resultado requesitado - array, object, e class name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Próxima linha do conjunto de resultados ou NULL se não houver resultados</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Busca a próxima linha do resultado e a retorna no formato requisitado.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas Resultantes</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::row_array">
+<tt class="descname">row_array</tt><big>(</big><span class="optional">[</span><em>$n = 0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::row_array" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha a ser retornada dos resultados da query</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se nenhuma linha for encontrada</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna o resultado da linha requisitada como um array associativo.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas Resultantes</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::row_object">
+<tt class="descname">row_object</tt><big>(</big><span class="optional">[</span><em>$n = 0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::row_object" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha a ser retornada dos resultados da query</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se não existir</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">stdClass</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna a linha do resultado requisitado como um objeto do tipo
+<tt class="docutils literal"><span class="pre">stdClass</span></tt>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas Resultantes</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::custom_row_object">
+<tt class="descname">custom_row_object</tt><big>(</big><em>$n</em>, <em>$type</em><big>)</big><a class="headerlink" href="#CI_DB_result::custom_row_object" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha a ser retornado dos resultados</li>
+<li><strong>$class_name</strong> (<em>string</em>) &#8211; Nome da classe para a linha resultante</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se não existir</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">$type</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna a linha requisitada do resultado como uma instância da classe requisitada.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::data_seek">
+<tt class="descname">data_seek</tt><big>(</big><span class="optional">[</span><em>$n = 0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::data_seek" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha dos próximos resultados a serem retornados</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">TRUE em caso de êxito, FALSE em caso de falha</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Move o ponteiro da linha dos resultados internos para o deslocamento desejado.</p>
+<p>Uso: veja <a class="reference internal" href="#result-helper-methods">Funções Auxiliares de Resultados</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::set_row">
+<tt class="descname">set_row</tt><big>(</big><em>$key</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::set_row" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>misto</em>) &#8211; Nome da coluna ou array de par com chaves/valores</li>
+<li><strong>$value</strong> (<em>misto</em>) &#8211; Valor para associar à coluna, $key é um campo único</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Atribui um valor para uma coluna em particular.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::next_row">
+<tt class="descname">next_row</tt><big>(</big><span class="optional">[</span><em>$type = 'object'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::next_row" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo do resultado requisitado - array, object ou nome da classe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Próxima linha de um conjunto de resultados ou NULL se não exista próxima linha.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna a próxima linha de um conjunto de resultados.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::previous_row">
+<tt class="descname">previous_row</tt><big>(</big><span class="optional">[</span><em>$type = 'object'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::previous_row" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo de um resultado requisitado - array, object ou nome da classe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha anterior de um conjunto de resultados ou NULL caso não exista linnha anterior.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna a linnha anterior de um conjunto de resultados.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::first_row">
+<tt class="descname">first_row</tt><big>(</big><span class="optional">[</span><em>$type = 'object'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::first_row" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tipo</strong> (<em>string</em>) &#8211; 
+  Tipo do resultado requisitado - array, object ou o nome da classe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Primeira linha do conjunto de resultados, ou NULL se não houverem resultados</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna o primeiro registro de um conjunto de registros.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::last_row">
+<tt class="descname">last_row</tt><big>(</big><span class="optional">[</span><em>$tipo = 'object'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::last_row" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tipo</strong> (<em>string</em>) &#8211; Tipo de um resultado requerido - array, object ou nome da classe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Último registro de um conjunto de registros, ou NULL se não houverem registros.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna o último registro de um conjunto de registros.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::num_rows">
+<tt class="descname">num_rows</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_result::num_rows" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Número de registros em um conjunto de registros</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna o número de registros em um conjunto de registros.</p>
+<p>Uso: veja <a class="reference internal" href="#result-helper-methods">Funções Auxiliares de Resultados</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::num_fields">
+<tt class="descname">num_fields</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_result::num_fields" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Número de campos em um conjunto de registros</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna o número de campos em um conjunto de registros.</p>
+<p>Uso: veja <a class="reference internal" href="#result-helper-methods">Funções Auxiliares de Resultados</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::field_data">
+<tt class="descname">field_data</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_result::field_data" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array contendo meta-dados do campo</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+<p>Gera um array do tipo de objeto <tt class="docutils literal"><span class="pre">stdClass</span></tt> contendo meta-dados do campo.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::free_result">
+<tt class="descname">free_result</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_result::free_result" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<p>Libera da memória um conjunto de resultados.</p>
+<p>Uso: veja <a class="reference internal" href="#result-helper-methods">Funções Auxiliares de Resultados</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_result::list_fields">
+<tt class="descname">list_fields</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_result::list_fields" title="Link permanente para esta definição">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array com os nomes das colunas</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna um array contendo os nomes das colunas em um conjunto de registros.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="helpers.html" class="btn btn-neutral float-right" title="Query Helper Methods">Próximo <span class="fa fa-arrow-circle-right"></span></a>
+
+
+        <a href="queries.html" class="btn btn-neutral" title="Queries"><span class="fa fa-arrow-circle-left"></span> Anterior</a>
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2016, British Columbia Institute of Technology.
+      Última atualização em 26 de julho de 2016.
+    </p>
+  </div>
+
+  Construído com <a href="http://sphinx-doc.org/">Sphinx</a> usando um <a href="https://github.com/snide/sphinx_rtd_theme">tema</a> fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+
+
+</body>
+</html>

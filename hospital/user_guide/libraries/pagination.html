@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Classe de Paginação &mdash; Documentação do CodeIgniter 3.1.0</title>
+
+
+
+
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
+
+
+
+    <link rel="top" title="Documentação do CodeIgniter 3.1.0" href="../index.html"/>
+        <link rel="up" title="Libraries" href="index.html"/>
+        <link rel="next" title="Template Parser Class" href="parser.html"/>
+        <link rel="prev" title="Classe de Saída" href="output.html"/>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div id="nav">
+  <div id="nav_inner">
+
+
+
+      <div id="pulldown-menu" class="ciNav">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bibliotecas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html">Classe de Saída</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+  </div>
+</div>
+<div id="nav2">
+  <a href="#" id="openToc">
+    <img src="data:image/jpeg;base64,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" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
+  </a>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar na documentação" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bibliotecas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html">Classe de Saída</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+
+        <li><a href="index.html">Bibliotecas</a> &raquo;</li>
+
+    <li>Classe de Paginação</li>
+    <li class="wy-breadcrumbs-aside">
+
+    </li>
+    <div style="float:right;margin-left:5px;" id="closeMe">
+      <img title="Layout Clássico" alt="classic layout" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" />
+    </div>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+
+  <div class="section" id="pagination-class">
+<h1>Classe de Paginação<a class="headerlink" href="#pagination-class" title="Permalink to this headline">¶</a></h1>
+<p>A classe de paginação do CodeIgniter é muito simples de ser utilizada e 100% personalizável (dinamicamente ou através configurações armazenadas).</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#example" id="id1">Exemplo</a><ul>
+<li><a class="reference internal" href="#notes" id="id2">Notas</a></li>
+<li><a class="reference internal" href="#setting-preferences-in-a-config-file" id="id3">Definindo as preferências em um arquivo de configuração</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customizing-the-pagination" id="id4">Personalizando a Paginação</a></li>
+<li><a class="reference internal" href="#adding-enclosing-markup" id="id5">Adicionando Anexo de Marcação</a></li>
+<li><a class="reference internal" href="#customizing-the-first-link" id="id6">Personalizando o Link &#8220;Primeiro&#8221; </a></li>
+<li><a class="reference internal" href="#customizing-the-last-link" id="id7">Personalizando o Link &#8220;Último&#8221; </a></li>
+<li><a class="reference internal" href="#customizing-the-next-link" id="id8">Personalizando o link &#8220;Próximo&#8221;</a></li>
+<li><a class="reference internal" href="#customizing-the-previous-link" id="id9">Personalizando o link &#8220;Anterior&#8221;</a></li>
+<li><a class="reference internal" href="#customizing-the-current-page-link" id="id10">Personalizando o link &#8220;Página atual&#8221;</a></li>
+<li><a class="reference internal" href="#customizing-the-digit-link" id="id11">Personalizando o &#8220;Dígito&#8221;</a></li>
+<li><a class="reference internal" href="#hiding-the-pages" id="id12">Ocultando as Páginas</a></li>
+<li><a class="reference internal" href="#adding-attributes-to-anchors" id="id13">Adicionando atributos do texto do link</a></li>
+<li><a class="reference internal" href="#disabling-the-rel-attribute" id="id14">Desabilitando o atributo &#8220;rel&#8221;</a></li>
+<li><a class="reference internal" href="#class-reference" id="id15">Referência da Classe</a></li>
+</ul>
+</div>
+<div class="custom-index container"></div><p>Se você não está familiarizado com o termo &#8220;paginação&#8221;, 
+    isso se refere aos links de navegação, que permitem a visualização página a página, assim como estes:
+</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">«</span> <span class="nx">Primeira  </span><span class="o">&lt;</span><span class="nx"> 1 2 3 4 5 </span><span class="o">&gt;</span><span class="nx">  Última</span> <span class="nx">»</span>
+</pre></div>
+</div>
+<div class="section" id="example">
+<h2><a class="toc-backref" href="#id1">Exemplo</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Aqui está um simples exemplo demonstrando como criar paginação em um de seus métodos do
+<a class="reference internal" href="../general/controllers.html"><em>controller</em></a>:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;pagination&#39;</span><span class="p">);</span>
+
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;base_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;http://example.com/index.php/test/page/&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;total_rows&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;per_page&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pagination</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pagination</span><span class="o">-&gt;</span><span class="na">create_links</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="notes">
+<h3><a class="toc-backref" href="#id2">Notas</a><a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p>O array <tt class="docutils literal"><span class="pre">$config</span></tt> contém suas variáveis de configuração. Ela é passada ao
+método<tt class="docutils literal"><span class="pre">$this-&gt;pagination-&gt;initialize()</span></tt> como é mostrado acima. 
+Embora exista cerca de 20 itens que você pode configurar, no mínimo 3 precisam ser mostrados. 
+Aqui está a descrição do que estes itens representam:</p>
+<ul class="simple">
+<li><strong>base_url</strong> Este é URL completo da classe controller/função que contém sua paginação. No exemplo acima, está apontando para o controller chamado 
+&#8220;Test&#8221; e uma função chamada &#8220;page&#8221;. Lembre-se que você pode
+<a class="reference internal" href="../general/routing.html"><em>reorganizar seu roteamento URI</em></a> se você 
+necessita de uma estrutura diferente.</li>
+<li><strong>total_rows</strong> Este número representa o total de linhas do resultado o qual você está criando a paginação.
+Geralmente este número será o total de linhas retornadas pela pesquisa no banco.</li>
+<li><strong>per_page</strong> O número de itens que você pretende mostrar por página. No exemplo acima, seria exibido 20 itens por página.</li>
+</ul>
+<p>O método <tt class="docutils literal"><span class="pre">create_links()</span></tt> retorna uma string vazia quando não há paginação a ser exibida.</p>
+</div>
+<div class="section" id="setting-preferences-in-a-config-file">
+<h3><a class="toc-backref" href="#id3">Definindo as preferências em um arquivo de paginação</a><a class="headerlink" href="#setting-preferences-in-a-config-file" title="Permalink to this headline">¶</a></h3>
+<p>Se você prefere definir as preferências utilizando o método acima, você pode colocar as definições em um arquivo de configurações. 
+Apenas crie um novo arquivo chamado 
+pagination.php, adicione o array <tt class="docutils literal"><span class="pre">$config</span></tt> dentro do arquivo criado, salve o arquivo na pasta:
+<em>application/config/</em> e ele será utilizado automaticamente.
+Você não precisa usar <tt class="docutils literal"><span class="pre">$this-&gt;pagination-&gt;initialize()</span></tt> se você 
+salvar suas preferências no arquivo de configurações.</p>
+</div>
+</div>
+<div class="section" id="customizing-the-pagination">
+<h2><a class="toc-backref" href="#id4">Personalizando a Paginação</a><a class="headerlink" href="#customizing-the-pagination" title="Permalink to this headline">¶</a></h2>
+<p>A seguir está a lista com todas as preferências que você poderá passar ao método de inicialização 
+ para adaptar na tela.</p>
+<p><strong>$config[&#8216;uri_segment&#8217;] = 3;</strong></p>
+<p>A função de paginação automaticamente determina que segmento da sua URI contém o número da paǵina. 
+Se necessita que seja um segmento diferente, você pode especificar:</p>
+<p><strong>$config[&#8216;num_links&#8217;] = 2;</strong></p>
+<p>O número de links de número de páginas que você gostaria de exibir antes e depois do número da página selecionada. 
+Por exemplo, o número 2 colocará dois dígitos (links de páginas) de cada lado do link da página atual, como o exemplo exibido no topo da página.</p>
+<p><strong>$config[&#8216;use_page_numbers&#8217;] = TRUE;</strong></p>
+<p>Por padrão, o segmento da URI utilizará o índice inicial para os itens que você está paginando.
+Se você prefere exibir o número da página atual, defina o valor como "TRUE".</p>
+<p><strong>$config[&#8216;page_query_string&#8217;] = TRUE;</strong></p>
+<p>Por padrão, a biblioteca de paginação assume que você está utilizando <a class="reference internal" href="../general/urls.html"><em>URI
+Segments</em></a>, e constrói seus links como:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">http</span><span class="o">://</span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="o">/</span><span class="nx">test</span><span class="o">/</span><span class="nx">page</span><span class="o">/</span><span class="mi">20</span>
+</pre></div>
+</div>
+<p>Se você possui <tt class="docutils literal"><span class="pre">$config['enable_query_strings']</span></tt> definido como TRUE seus links
+serão automaticamente reescritos utilizando Query Strings. Esta opção também pode ser definida explicitamente. 
+Usando <tt class="docutils literal"><span class="pre">$config['page_query_string']</span></tt> definido como TRUE,
+o link de paginação se tornará: </p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">http</span><span class="o">://</span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="o">?</span><span class="nx">c</span><span class="o">=</span><span class="nx">test</span><span class="o">&amp;</span><span class="nx">m</span><span class="o">=</span><span class="nx">page</span><span class="o">&amp;</span><span class="nx">per_page</span><span class="o">=</span><span class="mi">20</span>
+</pre></div>
+</div>
+<p>Note que &#8220;per_page&#8221; é a requisição passada como padrão, entretanto pode ser configurada utilizando 
+<tt class="docutils literal"><span class="pre">$config['query_string_segment']</span> <span class="pre">=</span> <span class="pre">'sua_string'</span></tt></p>
+<p><strong>$config[&#8216;reuse_query_string&#8217;] = FALSE;</strong></p>
+<p>Por padrão seus argumentos de requisição (nada a ver com outros
+opções de string de consulta) serão ignorados. Definindo esta configuração para TRUE, 
+serão adicionados strings de busca existentes novamente à URL depois do segmento de URI e antes do sufixo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">http</span><span class="o">://</span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="o">/</span><span class="nx">test</span><span class="o">/</span><span class="nx">page</span><span class="o">/</span><span class="mi">20</span><span class="o">?</span><span class="nx">query</span><span class="o">=</span><span class="nx">search</span><span class="o">%</span><span class="nx">term</span>
+</pre></div>
+</div>
+<p>Isto ajuda a juntar o <a class="reference internal" href="../general/urls.html"><em>URI Segments</em></a>
+normal assim como argumentos de requisição (parâmetros de consulta), que até a versão 3.0 no era possível.</p>
+<p><strong>$config[&#8216;prefix&#8217;] = &#8216;&#8217;;</strong></p>
+<p>Um prefixo personalizado ao endereço. O valor do prefixo estará antes do segmento offset.</p>
+<p><strong>$config[&#8216;suffix&#8217;] = &#8216;&#8217;;</strong></p>
+
+<p>Um sufixo adicionado ao endereço. O valor do sufixo estará depois do segmento <i>offset</i>.</p>
+<p><strong>$config[&#8216;use_global_url_suffix&#8217;] = FALSE;</strong></p>
+<p>Quando definido como TRUE, Será<strong>sobreposto</strong> o valor de <tt class="docutils literal"><span class="pre">$config['suffix']</span></tt> e
+em vez de definir com o que está em <tt class="docutils literal"><span class="pre">$config['url_suffix']</span></tt> no
+seu arquivo <strong>application/config/config.php</strong>.</p>
+</div>
+<div class="section" id="adding-enclosing-markup">
+<h2><a class="toc-backref" href="#id5">Adicionando Marcações (tag html) </a><a class="headerlink" href="#adding-enclosing-markup" title="Permalink to this headline">¶</a></h2>
+<p>Se você gostaria de cercar a paginação com algumas marcações (tags html), você pode fazê-lo com estas duas preferências:</p>
+<p><strong>$config[&#8216;full_tag_open&#8217;] = &#8216;&lt;p&gt;&#8217;;</strong></p>
+<p>A tag de abertura do lado esquerdo do resultado total.</p>
+<p><strong>$config[&#8216;full_tag_close&#8217;] = &#8216;&lt;/p&gt;&#8217;;</strong></p>
+<p>A tag de fechamento localizada no lado esquerdo do resultado total.</p>
+</div>
+<div class="section" id="customizing-the-first-link">
+<h2><a class="toc-backref" href="#id6">Personalizando o Primeiro Link </a><a class="headerlink" href="#customizing-the-first-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[&#8216;first_link&#8217;] = &#8216;Primeira&#8217;;</strong></p>
+<p>O texto a ser exibido no &#8220;primeiro&#8221; link à esquerda. Se prefere não renderizar este link, você pode definir o valor como FALSO.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
+</div>
+<p><strong>$config[&#8216;first_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
+<p>A tag de abertura para o &#8220;primeiro&#8221; link.</p>
+<p><strong>$config[&#8216;first_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
+<p>A tag de fechamento para o &#8220;primeiro&#8221; link.</p>
+<p><strong>$config[&#8216;first_url&#8217;] = &#8216;&#8217;;</strong></p>
+<p>Uma URL alternativa para utilizar para o link de &#8220;primeira página&#8221;.</p>
+</div>
+<div class="section" id="customizing-the-last-link">
+<h2><a class="toc-backref" href="#id7">Personalizando o link <strong>Último</strong></a><a class="headerlink" href="#customizing-the-last-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[&#8216;last_link&#8217;] = &#8216;Última&#8217;;</strong></p>
+<p>O texto que será exibido no link &#8220;último&#8221; na direita. Para não ter esse link renderizado, pode ser definido este valor para FALSE.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
+</div>
+<p><strong>$config[&#8216;last_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
+<p>A tag de abertura para o link &#8220;último&#8221;.</p>
+<p><strong>$config[&#8216;last_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
+<p>A tag de fechamento para o link &#8220;último&#8221;.</p>
+</div>
+<div class="section" id="customizing-the-next-link">
+<h2><a class="toc-backref" href="#id8">Personalizando o link &#8220;Próximo&#8221;</a><a class="headerlink" href="#customizing-the-next-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[&#8216;next_link&#8217;] = &#8216;&amp;gt;&#8217;;</strong></p>
+<p>O texto que será exibido no link da página &#8220;Próxima&#8221;. Se não quiser que este link seja renderizado, você pode definir este valor para FALSE.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
+</div>
+<p><strong>$config[&#8216;next_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
+<p>A tag de abertura para o link &#8220;Próximo&#8221;.</p>
+<p><strong>$config[&#8216;next_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
+<p>A tag de fechamento para o link &#8220;Próximo&#8221;.</p>
+</div>
+<div class="section" id="customizing-the-previous-link">
+<h2><a class="toc-backref" href="#id9">Personalizando o link &#8220;Anterior&#8221;</a><a class="headerlink" href="#customizing-the-previous-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[&#8216;prev_link&#8217;] = &#8216;&amp;lt;&#8217;;</strong></p>
+<p>O texto que será exibido no link da página &#8220;anterior&#8221;. Se não quiser que este link seja renderizado, 
+você alterar este valor para FALSE.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
+</div>
+<p><strong>$config[&#8216;prev_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
+<p>A tag de abertura para o link &#8220;Anterior&#8221;.</p>
+<p><strong>$config[&#8216;prev_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
+<p>A tag de fechamento para o link &#8220;Anterior&#8221;.</p>
+</div>
+<div class="section" id="customizing-the-current-page-link">
+<h2><a class="toc-backref" href="#id10">Personalizando o link de &#8220;Página Atual&#8221;</a><a class="headerlink" href="#customizing-the-current-page-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[&#8216;cur_tag_open&#8217;] = &#8216;&lt;b&gt;&#8217;;</strong></p>
+<p>A tag de abertura para o link de página &#8220;atual&#8221;.</p>
+<p><strong>$config[&#8216;cur_tag_close&#8217;] = &#8216;&lt;/b&gt;&#8217;;</strong></p>
+<p>A tag de fechamento para o link de página &#8220;atual&#8221;.</p>
+</div>    
+<div class="section" id="customizing-the-digit-link">
+<h2><a class="toc-backref" href="#id11">Personalizando o link do &#8220;Digito&#8221;</a><a class="headerlink" href="#customizing-the-digit-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[&#8216;num_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
+<p>A tag de abertura para o link &#8220;dígito&#8221;.</p>
+<p><strong>$config[&#8216;num_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
+<p>A tag de fechamento para o link &#8220;digito&#8221;.</p>
+</div>
+<div class="section" id="hiding-the-pages">
+<h2><a class="toc-backref" href="#id12">Ocultando as Páginas</a><a class="headerlink" href="#hiding-the-pages" title="Permalink to this headline">¶</a></h2>
+<p>Se deseja não listar páginas específicas (por exemplo, se quer somente os links de 
+&#8220;próximo&#8221; e &#8220;anterior&#8221;), você pode suprimir a renderização das páginas adicionando:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;display_pages&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+    
+    <!--OK-->
+<div class="section" id="adding-attributes-to-anchors">
+<h2><a class="toc-backref" href="#id13">Adicionando atributos aos links</a><a class="headerlink" href="#adding-attributes-to-anchors" title="Permalink to this headline">¶</a></h2>
+<p>Se deseja adicionar um atributo extra a cada link renderizado
+pela classe de paginação, você pode defini-los como pares de chave/valor na configuração dos 
+&#8220;atributos &#8221;:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Resulta: class=&quot;myclass&quot;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;myclass&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">O uso do método antigo de definir classes via &#8220;anchor_class&#8221;
+está obsoleto.</p>
+</div>
+</div>
+<div class="section" id="disabling-the-rel-attribute">
+<h2><a class="toc-backref" href="#id14">Desabilitando o atributo &#8220;rel&#8221;</a><a class="headerlink" href="#disabling-the-rel-attribute" title="Permalink to this headline">¶</a></h2>
+<p>Por padrão, o atributo rel é gerado dinamicamente e anexado aos links apropriados.
+Se por alguma razão você deseja desligar isso, você pode passar FALSE como atributo regular</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">][</span><span class="s1">&#39;rel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-reference">
+<h2><a class="toc-backref" href="#id15">Referência da Classe</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="CI_Pagination">
+<em class="property">class </em><tt class="descname">CI_Pagination</tt><a class="headerlink" href="#CI_Pagination" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="CI_Pagination::initialize">
+<tt class="descname">initialize</tt><big>(</big><span class="optional">[</span><em>$params = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Pagination::initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$params</strong> (<em>array</em>) &#8211; Parâmetros de Configuração</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Instância do CI_Pagination (encapsulamento do método)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">CI_Pagination</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Inicializa a classe de Paginação com suas opções escolhidas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Pagination::create_links">
+<tt class="descname">create_links</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Pagination::create_links" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Paginação formatada-HTML</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+<p>Returna uma barra de &#8220;paginação&#8221;, contendo os links gerados ou uma string vazia se for apenas uma única página.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="parser.html" class="btn btn-neutral float-right" title="Template Parser Class">Próximo <span class="fa fa-arrow-circle-right"></span></a>
+
+
+        <a href="output.html" class="btn btn-neutral" title="Classe de Saída"><span class="fa fa-arrow-circle-left"></span> Anterior</a>
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2016, British Columbia Institute of Technology.
+      Última atualização em 26 de julho de 2016.
+    </p>
+  </div>
+
+  Construído com <a href="http://sphinx-doc.org/">Sphinx</a> usando um <a href="https://github.com/snide/sphinx_rtd_theme">tema</a> fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+
+
+</body>
+</html>

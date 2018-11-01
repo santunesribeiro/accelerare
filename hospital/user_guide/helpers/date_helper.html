@@ -1,0 +1,1218 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Auxiliar de Data &mdash; Documentação do CodeIgniter 3.1.0</title>
+
+
+
+
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
+
+
+
+    <link rel="top" title="Documentação do CodeIgniter 3.1.0" href="../index.html"/>
+        <link rel="up" title="Helpers" href="index.html"/>
+        <link rel="next" title="Auxiliar de Diretório" href="directory_helper.html"/>
+        <link rel="prev" title="Auxiliar de Cookie" href="cookie_helper.html"/>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div id="nav">
+  <div id="nav_inner">
+
+
+
+      <div id="pulldown-menu" class="ciNav">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">Bibliotecas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Auxiliares</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+  </div>
+</div>
+<div id="nav2">
+  <a href="#" id="openToc">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAARgAA/+4ADkFkb2JlAGTAAAAAAf/bAIQABAMDAwMDBAMDBAYEAwQGBwUEBAUHCAYGBwYGCAoICQkJCQgKCgwMDAwMCgwMDQ0MDBERERERFBQUFBQUFBQUFAEEBQUIBwgPCgoPFA4ODhQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU/8AAEQgAKwCaAwERAAIRAQMRAf/EAHsAAQAABwEBAAAAAAAAAAAAAAABAwQFBgcIAgkBAQAAAAAAAAAAAAAAAAAAAAAQAAEDAwICBwYEAgsAAAAAAAIBAwQAEQUSBiEHkROTVNQWGDFBUVIUCHEiMtOUFWGBobHRQlMkZIRVEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDSC+ygkOOaUoKigUCgUCgUCgUCgUCgUCgUCgkuGguIP9FBMFb0Hqg7We+3jlmIqqYFf4ub+/QYlnOR/LqIBKGFUbf8qWv971BytQXXE7Y3Lnm3HsFhp2TaZJAdchRXpIgSpdEJWxJEW3xoKV7F5OMy7JkQn2o7D6w33XGjEAkoiqrJEqIiOIiKuhePCgqp22dyYyS3CyWHnQ5joG61HkRnmnTbaFSMhExRVQRRVJU9iUHjE7ez+fJ0MFipmUNhBV8YUd2SoIV9KkjQla9ltegttBdPLW4/qocL+UTfrMiHW4+P9M71shuyrqaHTcxsl7jegpsji8nh5ZwMvDfgTm0RTjSmjYdFCS6KoOIipdFunCgmNYTMv457MMY6U7iI6oMieDDhRm1VbIhuoOkbqtuK0Hpzb+eZcYZexUxt6UyUqK2cd0SdjtgrhOgijcgERUlJOCIl6CpgbP3blRI8XgMjNARAyKNDfeRBdFDBVUAXgQrqH4pxoJTu2NysY97LP4ac1io5q1InHFeGO24LnVKJuKOkSQ/yKir+rh7aCLG1dzypZQI2FnvTgccYOM3FeN0XWERXAUEFVQgQkUktdLpegm+Td3/Xli/L+S/mYNJIOF9G/wBeLKrZHFb0akG6W1WtQWSg3Dyg5e7V3fipE3O4/wCrktyzYA+ufas2LbZIlmnAT2kvuoN1wft95augilglX/tzP3qCu9O3LL/wV/i5v79BvmTADq14UGu91467Z6U9y0HzH/ncj/U/sT/CgynZG7I2NezpZGUjIycJkYkZSG+uQ81pbBNKLxJfjwoMqZ3/ALYHl35AJ7/cuwHcu5k7r1Q5pHetBjquqVVJWGxj9Zrtcl/Ggy3dHMvauR3HFZj5nHNxSyW5JISYDMoIwx8tFIGHZhPNaykGapr6rUAiicEoMG21lMRj8buPAz8xhJrr7uOeiPTCyAwXUaGR1mgozbTusOsFLEiJ7fbQa/h7gcjy2H3V6xppwDNtUSxCJIqp7valBuWVzJ22xuCROXNNZiJkMtms0DbjUkAZjzoDrTMd9dDRI44ZC2YsrYdKWP2WDT2S3N9dNdlRYrGMYc06IURXSYb0igrpWS485xVNS6nF4rwslkoMwnbpgZLB7bmt5uMweAhDEl4B5uSLzzqTnnyVpW2jaJHRMSIjdDiiotvy3DOE5rYTEbkl5yFn28k7JyG4c7AU2HtLH1uKfaiMPI40CdYbpNtmLdwTSn5rewLNld+7TLdeal4WarWBkbVKBjgdElMJJwAAY5fl4kB3b1fp4XvagsGS3FjJfLzDNtS8aeXx7LzT7TyzByQE5PccRGRC0ZRUDRV6y62vbjagzLmJzS2vuPK43JY6aP1TW6Jz+RIWyFtyC06y3EkiiinAo7YCqfq1AqqnGgsOH3lhZO8d1pmcpB8j5XIm9OYlBJSQ/FSS4427DKO0RC8AlcEMhFdViRR1WDWR5t3WXVuL1d106kG9vdeye2g60+1FDyW0shIcXVpyroXt8I8dfd+NB1vioAdWnD3UF1+gD4UFc6CEKpagxXN43rwJLUHz7yX2c8zokt9uHlsPIhA4aRnnHJTLptIS6CNsY7iASpxUUMkReGpfbQW0vtN5pitvrsN28rwtBD0nc0+/Yft5XhaB6TuaXfsP28rwtA9J3NPv2H7eV4Wgek7mn37D9vK8LQPSdzT79h+3leFoHpO5pd+w/byvC0D0nc0u/Yft5XhaB6TuaXfsP28rwtA9J3NLv2H7eV4Wgek7ml37D9vK8LQPSdzS79h+3leFoHpO5p9+w/byvC0E9r7Reazy2HIYVPxkS/CUHVn26cosxyv2g7h89LYmZSXOenvLEQ1YaQ222RATcQCP8rSGqqA8S02W2pQ6FhMoAIlqCtsnwoCpdKClejI4i3Sgtb+GBxVuNBSFt1pV/RQefLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8utJ/koJ7WCbBU/LQXOPAFq1koK8B0pag90CggtBBf6qB0UDooHRQOigdFA6KB0UDooHRQOigdFA6KB0UDooI0EaBQf//Z" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
+  </a>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar na documentação" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">Bibliotecas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/image_lib.html">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Auxiliares</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+
+        <li><a href="index.html">Auxiliares</a> &raquo;</li>
+
+    <li>Auxiliar de Data</li>
+    <li class="wy-breadcrumbs-aside">
+
+    </li>
+    <div style="float:right;margin-left:5px;" id="closeMe">
+      <img title="Layout Clássico" alt="classic layout" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" />
+    </div>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+
+  <div class="section" id="date-helper">
+<h1>Auxiliar de Data<a class="headerlink" href="#date-helper" title="Permalink to this headline">¶</a></h1>
+<p>O arquivo Auxiliar de Data contém funções que auxiliam no trabalho com datas.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#loading-this-helper" id="id1">Carregando este Auxiliar</a></li>
+<li><a class="reference internal" href="#available-functions" id="id2">Funções disponíveis</a></li>
+<li><a class="reference internal" href="#timezone-reference" id="id3">Referência do fuso horário</a></li>
+</ul>
+</div>
+<div class="custom-index container"></div><div class="section" id="loading-this-helper">
+<h2><a class="toc-backref" href="#id1">Carregando este Auxiliar</a><a class="headerlink" href="#loading-this-helper" title="Permalink to this headline">¶</a></h2>
+<p>Este auxiliar é carregado usando o seguinte código:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">helper</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="available-functions">
+<h2><a class="toc-backref" href="#id2">Funções disponíveis</a><a class="headerlink" href="#available-functions" title="Permalink to this headline">¶</a></h2>
+<p>As seguinte funções estão disponíveis:</p>
+<dl class="function">
+<dt id="now">
+<tt class="descname">now</tt><big>(</big><span class="optional">[</span><em>$timezone = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#now" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$timezone</strong> (<em>string</em>) &#8211; Fuso horário</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna a hora atual como um timestamp UNIX, referenciado à hora local do servidor ou a qualquer fuso horário suportado pelo PHP, com base na configuração "time reference (referência de tempo)" no seu arquivo de configuração. Se você não pretende definir sua referência de tempo principal para qualquer outro fuso horário suportado pelo PHP (o que normalmente você fará se você executar um site que permita a cada usuário definir suas próprias configurações de fuso horário), não há nenhum benefício para usar esta função em relação a função <tt class="docutils literal"><span class="pre">time()</span></tt> do PHP.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">now</span><span class="p">(</span><span class="s1">&#39;Australia/Victoria&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Se um fuso horário não for fornecido, ele retornará o <tt class="docutils literal"><span class="pre">time()</span></tt> com base na configuração <strong>time_reference</strong>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mdate">
+<tt class="descname">mdate</tt><big>(</big><span class="optional">[</span><em>$datestr = ''</em><span class="optional">[</span>, <em>$time = ''</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#mdate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$datestr</strong> (<em>string</em>) &#8211; String de data</li>
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Data formatada em MySQL</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Esta função é idêntica à função <a class="reference external" href="http://php.net/manual/en/function.date.php">date()</a> do PHP, exceto que permite usar códigos de data no estilo MySQL, onde cada letra de código é precedida de um sinal de porcentagem, por exemplo, <cite>%Y %m %d</cite></p>
+<p>O benefício de fazer datas dessa maneira é que você não precisa se preocupar em escapar de quaisquer caracteres que não seja um código de data, como normalmente teria que fazer com a função <tt class="docutils literal"><span class="pre">date()</span></tt>.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$datestring</span> <span class="o">=</span> <span class="s1">&#39;Year: %Y Month: %m Day: %d - %h:%i %a&#39;</span><span class="p">;</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nx">mdate</span><span class="p">(</span><span class="nv">$datestring</span><span class="p">,</span> <span class="nv">$time</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Se um timestamp não estiver incluído no segundo parâmetro, o tempo atual será usado.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="standard_date">
+<tt class="descname">standard_date</tt><big>(</big><span class="optional">[</span><em>$fmt = 'DATE_RFC822'</em><span class="optional">[</span>, <em>$time = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#standard_date" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fmt</strong> (<em>string</em>) &#8211; Formato de data</li>
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Data formatada ou FALSE em caso de formato inválido</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Permite gerar uma string de data em um dos vários formatos padronizados.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$format</span> <span class="o">=</span> <span class="s1">&#39;DATE_RFC822&#39;</span><span class="p">;</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nx">standard_date</span><span class="p">(</span><span class="nv">$format</span><span class="p">,</span> <span class="nv">$time</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Esta função está DEPRECIADA. Use a função nativa <tt class="docutils literal"><span class="pre">date()</span></tt> combinada com as <a class="reference external" href="http://php.net/manual/en/class.datetime.php#datetime.constants.types">constantes de formato do DateTime</a> em vez disso:</p>
+<div class="last highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nb">date</span><span class="p">(</span><span class="nx">DATE_RFC822</span><span class="p">,</span> <span class="nb">time</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Formatos suportados:</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="30%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Constante</th>
+<th class="head">Descrição</th>
+<th class="head">Exemplo</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DATE_ATOM</td>
+<td>Atom</td>
+<td>2005-08-15T16:13:03+0000</td>
+</tr>
+<tr class="row-odd"><td>DATE_COOKIE</td>
+<td>HTTP Cookies</td>
+<td>Sun, 14 Aug 2005 16:13:03 UTC</td>
+</tr>
+<tr class="row-even"><td>DATE_ISO8601</td>
+<td>ISO-8601</td>
+<td>2005-08-14T16:13:03+00:00</td>
+</tr>
+<tr class="row-odd"><td>DATE_RFC822</td>
+<td>RFC 822</td>
+<td>Sun, 14 Aug 05 16:13:03 UTC</td>
+</tr>
+<tr class="row-even"><td>DATE_RFC850</td>
+<td>RFC 850</td>
+<td>Sunday, 14-Aug-05 16:13:03 UTC</td>
+</tr>
+<tr class="row-odd"><td>DATE_RFC1036</td>
+<td>RFC 1036</td>
+<td>Sunday, 14-Aug-05 16:13:03 UTC</td>
+</tr>
+<tr class="row-even"><td>DATE_RFC1123</td>
+<td>RFC 1123</td>
+<td>Sun, 14 Aug 2005 16:13:03 UTC</td>
+</tr>
+<tr class="row-odd"><td>DATE_RFC2822</td>
+<td>RFC 2822</td>
+<td>Sun, 14 Aug 2005 16:13:03 +0000</td>
+</tr>
+<tr class="row-even"><td>DATE_RSS</td>
+<td>RSS</td>
+<td>Sun, 14 Aug 2005 16:13:03 UTC</td>
+</tr>
+<tr class="row-odd"><td>DATE_W3C</td>
+<td>W3C</td>
+<td>2005-08-14T16:13:03+0000</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="local_to_gmt">
+<tt class="descname">local_to_gmt</tt><big>(</big><span class="optional">[</span><em>$time = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#local_to_gmt" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Toma um timestamp UNIX como entrada e retorna como GMT.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$gmt</span> <span class="o">=</span> <span class="nx">local_to_gmt</span><span class="p">(</span><span class="nb">time</span><span class="p">());</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gmt_to_local">
+<tt class="descname">gmt_to_local</tt><big>(</big><span class="optional">[</span><em>$time = ''</em><span class="optional">[</span>, <em>$timezone = 'UTC'</em><span class="optional">[</span>, <em>$dst = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#gmt_to_local" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
+<li><strong>$timezone</strong> (<em>string</em>) &#8211; Fuso horário</li>
+<li><strong>$dst</strong> (<em>bool</em>) &#8211; Se DST está ativo</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Toma um timestamp UNIX (referenciado para GMT) como entrada e o converte em um timestamp localizado com base no fuso horário e no horário de verão enviado.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$timestamp</span> <span class="o">=</span> <span class="mi">1140153693</span><span class="p">;</span>
+<span class="nv">$timezone</span>  <span class="o">=</span> <span class="s1">&#39;UM8&#39;</span><span class="p">;</span>
+<span class="nv">$daylight_saving</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">gmt_to_local</span><span class="p">(</span><span class="nv">$timestamp</span><span class="p">,</span> <span class="nv">$timezone</span><span class="p">,</span> <span class="nv">$daylight_saving</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">nota</p>
+<p class="last">Para uma lista de fuso horário, consulte a referência na parte inferior desta página.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mysql_to_unix">
+<tt class="descname">mysql_to_unix</tt><big>(</big><span class="optional">[</span><em>$time = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#mysql_to_unix" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$time</strong> (<em>string</em>) &#8211; MySQL timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Toma um Timestamp do MySQL como entrada e o retorna como um timestamp UNIX.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$unix</span> <span class="o">=</span> <span class="nx">mysql_to_unix</span><span class="p">(</span><span class="s1">&#39;20061124092345&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="unix_to_human">
+<tt class="descname">unix_to_human</tt><big>(</big><span class="optional">[</span><em>$time = ''</em><span class="optional">[</span>, <em>$seconds = FALSE</em><span class="optional">[</span>, <em>$fmt = 'us'</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#unix_to_human" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
+<li><strong>$seconds</strong> (<em>bool</em>) &#8211; Se exibe os segundos</li>
+<li><strong>$fmt</strong> (<em>string</em>) &#8211; Formato (us ou euro)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Data formatada</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Toma um timestamp UNIX como entrada e retorna em um formato legível para humanos com este protótipo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">YYYY</span><span class="o">-</span><span class="nx">MM</span><span class="o">-</span><span class="nx">DD</span> <span class="nx">HH</span><span class="o">:</span><span class="nx">MM</span><span class="o">:</span><span class="nx">SS</span> <span class="nx">AM</span><span class="o">/</span><span class="nx">PM</span>
+</pre></div>
+</div>
+<p>Isso pode ser útil se você precisar exibir uma data em um campo de formulário para submissão.</p>
+<p>O tempo pode ser formatado com ou sem segundos, e pode ser configurado para o formato europeu ou americano.
+Se apenas o timestamp for enviado, ele retornará o tempo sem segundos formatados para os EUA.</p>
+<p>Exemplos:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$now</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nx">unix_to_human</span><span class="p">(</span><span class="nv">$now</span><span class="p">);</span> <span class="c1">// Hora dos EUA, sem segundos</span>
+<span class="k">echo</span> <span class="nx">unix_to_human</span><span class="p">(</span><span class="nv">$now</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">,</span> <span class="s1">&#39;us&#39;</span><span class="p">);</span> <span class="c1">// Hora dos EUA, com segundos</span>
+<span class="k">echo</span> <span class="nx">unix_to_human</span><span class="p">(</span><span class="nv">$now</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">,</span> <span class="s1">&#39;eu&#39;</span><span class="p">);</span> <span class="c1">// Hora da Europa, com segundos</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="human_to_unix">
+<tt class="descname">human_to_unix</tt><big>(</big><span class="optional">[</span><em>$datestr = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#human_to_unix" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$datestr</strong> (<em>int</em>) &#8211; String de data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX ou FALSE em caso de falha</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>O oposto da função <tt class="xref php php-func docutils literal"><span class="pre">unix_to_time()</span></tt>. Toma um tempo "humano" como entrada e o retorna como um timestamp UNIX. Isso é útil se você aceitar as datas formatadas "humanas" enviadas por meio de um formulário. Retorna boolean FALSE caso uma string de data passada para ele não esteja formatado como indicado acima.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$now</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="nv">$human</span> <span class="o">=</span> <span class="nx">unix_to_human</span><span class="p">(</span><span class="nv">$now</span><span class="p">);</span>
+<span class="nv">$unix</span> <span class="o">=</span> <span class="nx">human_to_unix</span><span class="p">(</span><span class="nv">$human</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="nice_date">
+<tt class="descname">nice_date</tt><big>(</big><span class="optional">[</span><em>$bad_date = ''</em><span class="optional">[</span>, <em>$format = FALSE</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#nice_date" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$bad_date</strong> (<em>int</em>) &#8211; Uma string de data terrivelmente formatada</li>
+<li><strong>$format</strong> (<em>string</em>) &#8211; Formato de data a retornar (igual à função <tt class="docutils literal"><span class="pre">date()</span></tt> do PHP)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Data formatada</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Esta função pode ter um número de formatos de data mal formados e convertê-los em algo útil. Também aceita datas bem formadas.</p>
+<p>A função retornará um timestamp UNIX por padrão. Você pode, opcionalmente, passar um formato em string (o mesmo tipo que a função <tt class="docutils literal"><span class="pre">date()</span></tt> do PHP aceita) como o segundo parâmetro.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$bad_date</span> <span class="o">=</span> <span class="s1">&#39;199605&#39;</span><span class="p">;</span>
+<span class="c1">// Deve Produzir: 1996-05-01</span>
+<span class="nv">$better_date</span> <span class="o">=</span> <span class="nx">nice_date</span><span class="p">(</span><span class="nv">$bad_date</span><span class="p">,</span> <span class="s1">&#39;Y-m-d&#39;</span><span class="p">);</span>
+
+<span class="nv">$bad_date</span> <span class="o">=</span> <span class="s1">&#39;9-11-2001&#39;</span><span class="p">;</span>
+<span class="c1">// Deve Produzir: 2001-09-11</span>
+<span class="nv">$better_date</span> <span class="o">=</span> <span class="nx">nice_date</span><span class="p">(</span><span class="nv">$bad_date</span><span class="p">,</span> <span class="s1">&#39;Y-m-d&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="timespan">
+<tt class="descname">timespan</tt><big>(</big><span class="optional">[</span><em>$seconds = 1</em><span class="optional">[</span>, <em>$time = ''</em><span class="optional">[</span>, <em>$units = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#timespan" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$seconds</strong> (<em>int</em>) &#8211; Número de segundos</li>
+<li><strong>$time</strong> (<em>string</em>) &#8211; Timestamp UNIX</li>
+<li><strong>$units</strong> (<em>int</em>) &#8211; Número de unidades de tempo para exibir</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Diferença de tempo formatada</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Formata um timestamp UNIX para que seja semelhante a este:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="mi">1</span> <span class="nx">Year</span><span class="p">,</span> <span class="mi">10</span> <span class="nx">Months</span><span class="p">,</span> <span class="mi">2</span> <span class="nx">Weeks</span><span class="p">,</span> <span class="mi">5</span> <span class="nx">Days</span><span class="p">,</span> <span class="mi">10</span> <span class="nx">Hours</span><span class="p">,</span> <span class="mi">16</span> <span class="nx">Minutes</span>
+</pre></div>
+</div>
+<p>O primeiro parâmetro deve conter um timestamp UNIX. O segundo parâmetro deve conter um timestamp que seja maior que o primeiro timestamp.
+O terceiro parâmetro é opcional e limita o número de unidades de tempo a serem exibidas.</p>
+<p>Se o segundo parâmetro estiver vazio, o tempo atual será usado.</p>
+<p>O propósito mais comum para esta função é mostrar quanto tempo decorrido de algum momento no passado até agora.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$post_date</span> <span class="o">=</span> <span class="s1">&#39;1079621429&#39;</span><span class="p">;</span>
+<span class="nv">$now</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="nv">$units</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">timespan</span><span class="p">(</span><span class="nv">$post_date</span><span class="p">,</span> <span class="nv">$now</span><span class="p">,</span> <span class="nv">$units</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">nota</p>
+<p class="last">O texto gerado por esta função é encontrado no seguinte arquivo de idioma: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="days_in_month">
+<tt class="descname">days_in_month</tt><big>(</big><span class="optional">[</span><em>$month = 0</em><span class="optional">[</span>, <em>$year = ''</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#days_in_month" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$month</strong> (<em>int</em>) &#8211; Um mês numérico</li>
+<li><strong>$year</strong> (<em>int</em>) &#8211; Um ano numérico</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Contagem de dias no mês especificado</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna o número de dias em um determinado mês/ano. Tem em conta os anos bissextos.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">days_in_month</span><span class="p">(</span><span class="mo">06</span><span class="p">,</span> <span class="mi">2005</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Se o segundo parâmetro estiver vazio, o ano atual será usado.</p>
+<div class="admonition note">
+<p class="first admonition-title">nota</p>
+<p class="last">Esta função é um alias para o nativo <tt class="docutils literal"><span class="pre">cal_days_in_month()</span></tt>, se estiver disponível.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="date_range">
+<tt class="descname">date_range</tt><big>(</big><span class="optional">[</span><em>$unix_start = ''</em><span class="optional">[</span>, <em>$mixed = ''</em><span class="optional">[</span>, <em>$is_unix = TRUE</em><span class="optional">[</span>, <em>$format = 'Y-m-d'</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#date_range" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$unix_start</strong> (<em>int</em>) &#8211; Timestamp UNIX da data de início do intervalo</li>
+<li><strong>$mixed</strong> (<em>int</em>) &#8211; Timestamp UNIX da data final do intervalo ou intervalo em dias</li>
+<li><strong>$is_unix</strong> (<em>bool</em>) &#8211; Configurado para FALSE se $mixed não for um timestamp</li>
+<li><strong>$format</strong> (<em>string</em>) &#8211; Formato da data de saída, igual ao <tt class="docutils literal"><span class="pre">date()</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Um array de datas</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna uma lista de datas dentro de um período especificado.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$range</span> <span class="o">=</span> <span class="nx">date_range</span><span class="p">(</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-01-15&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;Primeiros 15 dias de 2012:&quot;</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$range</span> <span class="k">as</span> <span class="nv">$date</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$date</span><span class="o">.</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="timezones">
+<tt class="descname">timezones</tt><big>(</big><span class="optional">[</span><em>$tz = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#timezones" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tz</strong> (<em>string</em>) &#8211; Um fuso horário numérico</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Diferença horária de UTC</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Toma uma referência de fuso horário (para uma lista de fusos horários válidos, veja a "Referência do fuso horário" abaixo) e retorna o número de horas de deslocamento de UTC.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">timezones</span><span class="p">(</span><span class="s1">&#39;UM5&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Esta função é útil quando usada com <a class="reference internal" href="#timezone_menu" title="timezone_menu"><tt class="xref php php-func docutils literal"><span class="pre">timezone_menu()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="timezone_menu">
+<tt class="descname">timezone_menu</tt><big>(</big><span class="optional">[</span><em>$default = 'UTC'</em><span class="optional">[</span>, <em>$class = ''</em><span class="optional">[</span>, <em>$name = 'timezones'</em><span class="optional">[</span>, <em>$attributes = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#timezone_menu" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$default</strong> (<em>string</em>) &#8211; Fuso horário</li>
+<li><strong>$class</strong> (<em>string</em>) &#8211; Nome da classe</li>
+<li><strong>$name</strong> (<em>string</em>) &#8211; Nome do menu</li>
+<li><strong>$attributes</strong> (<em>mixed</em>) &#8211; Atributos HTML</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">HTML drop down menu with time zones</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Gera um menu suspenso de fuso horário, como este:</p>
+<form action="#">
+        <select name="timezones">
+                <option value='UM12'>(UTC -12:00) Baker/Howland Island</option>
+                <option value='UM11'>(UTC -11:00) Samoa Time Zone, Niue</option>
+                <option value='UM10'>(UTC -10:00) Hawaii-Aleutian Standard Time, Cook Islands, Tahiti</option>
+                <option value='UM95'>(UTC -9:30) Marquesas Islands</option>
+                <option value='UM9'>(UTC -9:00) Alaska Standard Time, Gambier Islands</option>
+                <option value='UM8'>(UTC -8:00) Pacific Standard Time, Clipperton Island</option>
+                <option value='UM7'>(UTC -7:00) Mountain Standard Time</option>
+                <option value='UM6'>(UTC -6:00) Central Standard Time</option>
+                <option value='UM5'>(UTC -5:00) Eastern Standard Time, Western Caribbean Standard Time</option>
+                <option value='UM45'>(UTC -4:30) Venezuelan Standard Time</option>
+                <option value='UM4'>(UTC -4:00) Atlantic Standard Time, Eastern Caribbean Standard Time</option>
+                <option value='UM35'>(UTC -3:30) Newfoundland Standard Time</option>
+                <option value='UM3'>(UTC -3:00) Argentina, Brazil, French Guiana, Uruguay</option>
+                <option value='UM2'>(UTC -2:00) South Georgia/South Sandwich Islands</option>
+                <option value='UM1'>(UTC -1:00) Azores, Cape Verde Islands</option>
+                <option value='UTC' selected='selected'>(UTC) Greenwich Mean Time, Western European Time</option>
+                <option value='UP1'>(UTC +1:00) Central European Time, West Africa Time</option>
+                <option value='UP2'>(UTC +2:00) Central Africa Time, Eastern European Time, Kaliningrad Time</option>
+                <option value='UP3'>(UTC +3:00) Moscow Time, East Africa Time</option>
+                <option value='UP35'>(UTC +3:30) Iran Standard Time</option>
+                <option value='UP4'>(UTC +4:00) Azerbaijan Standard Time, Samara Time</option>
+                <option value='UP45'>(UTC +4:30) Afghanistan</option>
+                <option value='UP5'>(UTC +5:00) Pakistan Standard Time, Yekaterinburg Time</option>
+                <option value='UP55'>(UTC +5:30) Indian Standard Time, Sri Lanka Time</option>
+                <option value='UP575'>(UTC +5:45) Nepal Time</option>
+                <option value='UP6'>(UTC +6:00) Bangladesh Standard Time, Bhutan Time, Omsk Time</option>
+                <option value='UP65'>(UTC +6:30) Cocos Islands, Myanmar</option>
+                <option value='UP7'>(UTC +7:00) Krasnoyarsk Time, Cambodia, Laos, Thailand, Vietnam</option>
+                <option value='UP8'>(UTC +8:00) Australian Western Standard Time, Beijing Time, Irkutsk Time</option>
+                <option value='UP875'>(UTC +8:45) Australian Central Western Standard Time</option>
+                <option value='UP9'>(UTC +9:00) Japan Standard Time, Korea Standard Time, Yakutsk Time</option>
+                <option value='UP95'>(UTC +9:30) Australian Central Standard Time</option>
+                <option value='UP10'>(UTC +10:00) Australian Eastern Standard Time, Vladivostok Time</option>
+                <option value='UP105'>(UTC +10:30) Lord Howe Island</option>
+                <option value='UP11'>(UTC +11:00) Srednekolymsk Time, Solomon Islands, Vanuatu</option>
+                <option value='UP115'>(UTC +11:30) Norfolk Island</option>
+                <option value='UP12'>(UTC +12:00) Fiji, Gilbert Islands, Kamchatka Time, New Zealand Standard Time</option>
+                <option value='UP1275'>(UTC +12:45) Chatham Islands Standard Time</option>
+                <option value='UP13'>(UTC +13:00) Phoenix Islands Time, Tonga</option>
+                <option value='UP14'>(UTC +14:00) Line Islands</option>
+        </select>
+</form>
+<p>Este menu é útil se você executar um site de associação no qual seus usuários possam definir seu valor de fuso horário local.</p>
+<p>O primeiro parâmetro permite definir o estado "selecionado" do menu. Por exemplo, para configurar o horário do Pacífico como o padrão você fará isso:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">timezone_menu</span><span class="p">(</span><span class="s1">&#39;UM8&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Consulte a referência do fuso horário abaixo para ver os valores deste menu.</p>
+<p>O segundo parâmetro permite que você defina um nome de classe CSS para o menu.</p>
+<p>O quarto parâmetro permite definir um ou mais atributos na tag de seleção gerada.</p>
+<div class="admonition note">
+<p class="first admonition-title">nota</p>
+<p class="last">O texto contido no menu é encontrado no seguinte arquivo de idioma: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="timezone-reference">
+<h2><a class="toc-backref" href="#id3">Referência do fuso horário</a><a class="headerlink" href="#timezone-reference" title="Permalink to this headline">¶</a></h2>
+<p>A tabela a seguir indica cada fuso horário e sua localização.</p>
+<p>Observe que algumas das localizações da lista foram resumidas para clareza e formatação.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Fuso horário</th>
+<th class="head">Localização</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>UM12</td>
+<td>(UTC - 12:00) Baker/Howland Island</td>
+</tr>
+<tr class="row-odd"><td>UM11</td>
+<td>(UTC - 11:00) Samoa Time Zone, Niue</td>
+</tr>
+<tr class="row-even"><td>UM10</td>
+<td>(UTC - 10:00) Hawaii-Aleutian Standard Time, Cook Islands</td>
+</tr>
+<tr class="row-odd"><td>UM95</td>
+<td>(UTC - 09:30) Marquesas Islands</td>
+</tr>
+<tr class="row-even"><td>UM9</td>
+<td>(UTC - 09:00) Alaska Standard Time, Gambier Islands</td>
+</tr>
+<tr class="row-odd"><td>UM8</td>
+<td>(UTC - 08:00) Pacific Standard Time, Clipperton Island</td>
+</tr>
+<tr class="row-even"><td>UM7</td>
+<td>(UTC - 07:00) Mountain Standard Time</td>
+</tr>
+<tr class="row-odd"><td>UM6</td>
+<td>(UTC - 06:00) Central Standard Time</td>
+</tr>
+<tr class="row-even"><td>UM5</td>
+<td>(UTC - 05:00) Eastern Standard Time, Western Caribbean</td>
+</tr>
+<tr class="row-odd"><td>UM45</td>
+<td>(UTC - 04:30) Venezuelan Standard Time</td>
+</tr>
+<tr class="row-even"><td>UM4</td>
+<td>(UTC - 04:00) Atlantic Standard Time, Eastern Caribbean</td>
+</tr>
+<tr class="row-odd"><td>UM35</td>
+<td>(UTC - 03:30) Newfoundland Standard Time</td>
+</tr>
+<tr class="row-even"><td>UM3</td>
+<td>(UTC - 03:00) Argentina, Brazil, French Guiana, Uruguay</td>
+</tr>
+<tr class="row-odd"><td>UM2</td>
+<td>(UTC - 02:00) South Georgia/South Sandwich Islands</td>
+</tr>
+<tr class="row-even"><td>UM1</td>
+<td>(UTC -1:00) Azores, Cape Verde Islands</td>
+</tr>
+<tr class="row-odd"><td>UTC</td>
+<td>(UTC) Greenwich Mean Time, Western European Time</td>
+</tr>
+<tr class="row-even"><td>UP1</td>
+<td>(UTC +1:00) Central European Time, West Africa Time</td>
+</tr>
+<tr class="row-odd"><td>UP2</td>
+<td>(UTC +2:00) Central Africa Time, Eastern European Time</td>
+</tr>
+<tr class="row-even"><td>UP3</td>
+<td>(UTC +3:00) Moscow Time, East Africa Time</td>
+</tr>
+<tr class="row-odd"><td>UP35</td>
+<td>(UTC +3:30) Iran Standard Time</td>
+</tr>
+<tr class="row-even"><td>UP4</td>
+<td>(UTC +4:00) Azerbaijan Standard Time, Samara Time</td>
+</tr>
+<tr class="row-odd"><td>UP45</td>
+<td>(UTC +4:30) Afghanistan</td>
+</tr>
+<tr class="row-even"><td>UP5</td>
+<td>(UTC +5:00) Pakistan Standard Time, Yekaterinburg Time</td>
+</tr>
+<tr class="row-odd"><td>UP55</td>
+<td>(UTC +5:30) Indian Standard Time, Sri Lanka Time</td>
+</tr>
+<tr class="row-even"><td>UP575</td>
+<td>(UTC +5:45) Nepal Time</td>
+</tr>
+<tr class="row-odd"><td>UP6</td>
+<td>(UTC +6:00) Bangladesh Standard Time, Bhutan Time, Omsk Time</td>
+</tr>
+<tr class="row-even"><td>UP65</td>
+<td>(UTC +6:30) Cocos Islands, Myanmar</td>
+</tr>
+<tr class="row-odd"><td>UP7</td>
+<td>(UTC +7:00) Krasnoyarsk Time, Cambodia, Laos, Thailand, Vietnam</td>
+</tr>
+<tr class="row-even"><td>UP8</td>
+<td>(UTC +8:00) Australian Western Standard Time, Beijing Time</td>
+</tr>
+<tr class="row-odd"><td>UP875</td>
+<td>(UTC +8:45) Australian Central Western Standard Time</td>
+</tr>
+<tr class="row-even"><td>UP9</td>
+<td>(UTC +9:00) Japan Standard Time, Korea Standard Time, Yakutsk</td>
+</tr>
+<tr class="row-odd"><td>UP95</td>
+<td>(UTC +9:30) Australian Central Standard Time</td>
+</tr>
+<tr class="row-even"><td>UP10</td>
+<td>(UTC +10:00) Australian Eastern Standard Time, Vladivostok Time</td>
+</tr>
+<tr class="row-odd"><td>UP105</td>
+<td>(UTC +10:30) Lord Howe Island</td>
+</tr>
+<tr class="row-even"><td>UP11</td>
+<td>(UTC +11:00) Srednekolymsk Time, Solomon Islands, Vanuatu</td>
+</tr>
+<tr class="row-odd"><td>UP115</td>
+<td>(UTC +11:30) Norfolk Island</td>
+</tr>
+<tr class="row-even"><td>UP12</td>
+<td>(UTC +12:00) Fiji, Gilbert Islands, Kamchatka, New Zealand</td>
+</tr>
+<tr class="row-odd"><td>UP1275</td>
+<td>(UTC +12:45) Chatham Islands Standard Time</td>
+</tr>
+<tr class="row-even"><td>UP13</td>
+<td>(UTC +13:00) Phoenix Islands Time, Tonga</td>
+</tr>
+<tr class="row-odd"><td>UP14</td>
+<td>(UTC +14:00) Line Islands</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="directory_helper.html" class="btn btn-neutral float-right" title="Auxiliar de Diretório">Próximo <span class="fa fa-arrow-circle-right"></span></a>
+
+
+        <a href="cookie_helper.html" class="btn btn-neutral" title="Auxiliar de Cookie"><span class="fa fa-arrow-circle-left"></span> Anterior</a>
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2016, British Columbia Institute of Technology.
+      Última atualização em 26 de julho de 2016.
+    </p>
+  </div>
+
+  Construído com <a href="http://sphinx-doc.org/">Sphinx</a> usando um <a href="https://github.com/snide/sphinx_rtd_theme">tema</a> fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+
+
+</body>
+</html>

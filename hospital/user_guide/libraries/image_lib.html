@@ -1,0 +1,1244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Classe de Manipulação de Imagem &mdash; Documentação do CodeIgniter 3.1.0</title>
+
+
+
+
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
+
+
+
+    <link rel="top" title="Documentação do CodeIgniter 3.1.0" href="../index.html"/>
+        <link rel="up" title="Libraries" href="index.html"/>
+        <link rel="next" title="Classe de Entrada" href="input.html"/>
+        <link rel="prev" title="Classe de FTP" href="ftp.html"/>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div id="nav">
+  <div id="nav_inner">
+
+
+
+      <div id="pulldown-menu" class="ciNav">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bibliotecas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+  </div>
+</div>
+<div id="nav2">
+  <a href="#" id="openToc">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAARgAA/+4ADkFkb2JlAGTAAAAAAf/bAIQABAMDAwMDBAMDBAYEAwQGBwUEBAUHCAYGBwYGCAoICQkJCQgKCgwMDAwMCgwMDQ0MDBERERERFBQUFBQUFBQUFAEEBQUIBwgPCgoPFA4ODhQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU/8AAEQgAKwCaAwERAAIRAQMRAf/EAHsAAQAABwEBAAAAAAAAAAAAAAABAwQFBgcIAgkBAQAAAAAAAAAAAAAAAAAAAAAQAAEDAwICBwYEAgsAAAAAAAIBAwQAEQUSBiEHkROTVNQWGDFBUVIUCHEiMtOUFWGBobHRQlMkZIRVEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDSC+ygkOOaUoKigUCgUCgUCgUCgUCgUCgUCgkuGguIP9FBMFb0Hqg7We+3jlmIqqYFf4ub+/QYlnOR/LqIBKGFUbf8qWv971BytQXXE7Y3Lnm3HsFhp2TaZJAdchRXpIgSpdEJWxJEW3xoKV7F5OMy7JkQn2o7D6w33XGjEAkoiqrJEqIiOIiKuhePCgqp22dyYyS3CyWHnQ5joG61HkRnmnTbaFSMhExRVQRRVJU9iUHjE7ez+fJ0MFipmUNhBV8YUd2SoIV9KkjQla9ltegttBdPLW4/qocL+UTfrMiHW4+P9M71shuyrqaHTcxsl7jegpsji8nh5ZwMvDfgTm0RTjSmjYdFCS6KoOIipdFunCgmNYTMv457MMY6U7iI6oMieDDhRm1VbIhuoOkbqtuK0Hpzb+eZcYZexUxt6UyUqK2cd0SdjtgrhOgijcgERUlJOCIl6CpgbP3blRI8XgMjNARAyKNDfeRBdFDBVUAXgQrqH4pxoJTu2NysY97LP4ac1io5q1InHFeGO24LnVKJuKOkSQ/yKir+rh7aCLG1dzypZQI2FnvTgccYOM3FeN0XWERXAUEFVQgQkUktdLpegm+Td3/Xli/L+S/mYNJIOF9G/wBeLKrZHFb0akG6W1WtQWSg3Dyg5e7V3fipE3O4/wCrktyzYA+ufas2LbZIlmnAT2kvuoN1wft95augilglX/tzP3qCu9O3LL/wV/i5v79BvmTADq14UGu91467Z6U9y0HzH/ncj/U/sT/CgynZG7I2NezpZGUjIycJkYkZSG+uQ81pbBNKLxJfjwoMqZ3/ALYHl35AJ7/cuwHcu5k7r1Q5pHetBjquqVVJWGxj9Zrtcl/Ggy3dHMvauR3HFZj5nHNxSyW5JISYDMoIwx8tFIGHZhPNaykGapr6rUAiicEoMG21lMRj8buPAz8xhJrr7uOeiPTCyAwXUaGR1mgozbTusOsFLEiJ7fbQa/h7gcjy2H3V6xppwDNtUSxCJIqp7valBuWVzJ22xuCROXNNZiJkMtms0DbjUkAZjzoDrTMd9dDRI44ZC2YsrYdKWP2WDT2S3N9dNdlRYrGMYc06IURXSYb0igrpWS485xVNS6nF4rwslkoMwnbpgZLB7bmt5uMweAhDEl4B5uSLzzqTnnyVpW2jaJHRMSIjdDiiotvy3DOE5rYTEbkl5yFn28k7JyG4c7AU2HtLH1uKfaiMPI40CdYbpNtmLdwTSn5rewLNld+7TLdeal4WarWBkbVKBjgdElMJJwAAY5fl4kB3b1fp4XvagsGS3FjJfLzDNtS8aeXx7LzT7TyzByQE5PccRGRC0ZRUDRV6y62vbjagzLmJzS2vuPK43JY6aP1TW6Jz+RIWyFtyC06y3EkiiinAo7YCqfq1AqqnGgsOH3lhZO8d1pmcpB8j5XIm9OYlBJSQ/FSS4427DKO0RC8AlcEMhFdViRR1WDWR5t3WXVuL1d106kG9vdeye2g60+1FDyW0shIcXVpyroXt8I8dfd+NB1vioAdWnD3UF1+gD4UFc6CEKpagxXN43rwJLUHz7yX2c8zokt9uHlsPIhA4aRnnHJTLptIS6CNsY7iASpxUUMkReGpfbQW0vtN5pitvrsN28rwtBD0nc0+/Yft5XhaB6TuaXfsP28rwtA9J3NPv2H7eV4Wgek7mn37D9vK8LQPSdzT79h+3leFoHpO5pd+w/byvC0D0nc0u/Yft5XhaB6TuaXfsP28rwtA9J3NLv2H7eV4Wgek7ml37D9vK8LQPSdzS79h+3leFoHpO5p9+w/byvC0E9r7Reazy2HIYVPxkS/CUHVn26cosxyv2g7h89LYmZSXOenvLEQ1YaQ222RATcQCP8rSGqqA8S02W2pQ6FhMoAIlqCtsnwoCpdKClejI4i3Sgtb+GBxVuNBSFt1pV/RQefLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8utJ/koJ7WCbBU/LQXOPAFq1koK8B0pag90CggtBBf6qB0UDooHRQOigdFA6KB0UDooHRQOigdFA6KB0UDooI0EaBQf//Z" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
+  </a>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar na documentação" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Bem-vindo ao CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Baixando o CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Instruções de Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Atualizando de uma versão anterior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Resolução de problemas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Visão Geral do CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Primeiros Passos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">Resumo do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Recursos Suportados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Fluxograma da Aplicação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Objetivos da Arquitetura</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Páginas estáticas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">Seção de notícias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Criando novos itens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contribuindo com o CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Escrevendo Documentação do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Certificado de Origem 1.1 do desenvolvedor</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">Tópicos Gerais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">URLs no CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Nomes Reservados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Usando Bibliotecas do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Criando Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Usando Drivers do CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Criando Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Criando Classes para o Núcleo do Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Criando Classes Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Ganchos - Estendendo o Núcleo do Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Carregando Recursos Automaticamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Funções Comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Funções de Compatibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">Roteamento URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Tratamento de Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Executando através da CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Gerenciando suas Aplicações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Trabalhando em Vários Ambientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Sintaxe Alteranativa do PHP para Arquivos de Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">Guia de Estilo PHP</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bibliotecas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Classe de Avaliação Comparativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Classe de Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cart.html">Classe de Carrinho de Compras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Classe de Configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Classe de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypt.html">Classe de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption.html">Biblioteca de Criptografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_uploading.html">Classe de Envio de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_validation.html">Formulário de Validação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Classe de FTP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Classe de Manipulação de Imagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">Classe de Entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">Classe Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Classe de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loader.html">Classe Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Classe Migração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html">Classe de Saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Classe de Paginação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Classe de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Biblioteca de Sessão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">Classe de Tabela HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackback.html">Trackback Classe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">Classe Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Classe de Testes Unitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">Classe URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">Classe Agente do Usuário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">Classes XML-RPC and XML-RPC Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zip.html">Classe Zip Encoding</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Referência de Banco de Dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Início Rápido: Exemplos de Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Configuração do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Conectando a um Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Executando Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Gerando Resultados de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Funções Auxiliares para Consultas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Classe de Contrução de Consulta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Obtendo MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Personalizando Chamadas de Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Cache de Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Manipulação do Banco de Dados com Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Classe de Utilidades do Banco de Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Referência do Driver do Banco de Dados</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Auxiliares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Auxiliar de Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">Auxiliar de CAPTCHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Auxiliar de Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Auxiliar de Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Auxiliar de Diretório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Auxiliar de Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Auxiliar de Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">Auxiliar de Arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Auxiliar de Formulário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">Auxiliar de HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Auxiliar de Flexão Gramatical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Auxiliar de Idioma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Auxiliar de Número</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Auxiliar de Caminho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Auxiliar de Segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Auxiliar de Smiley</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">Auxiliar de String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Auxiliar de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Auxiliar de Tipografia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">Auxiliar de URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">Auxiliar de XML</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+
+        <li><a href="index.html">Bibliotecas</a> &raquo;</li>
+
+    <li>Classe de Manipulação de Imagem</li>
+    <li class="wy-breadcrumbs-aside">
+
+    </li>
+    <div style="float:right;margin-left:5px;" id="closeMe">
+      <img title="Layout Clássico" alt="classic layout" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" />
+    </div>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+
+  <div class="section" id="image-manipulation-class">
+<h1>Classe de Manipulação de Imagem<a class="headerlink" href="#image-manipulation-class" title="Permalink to this headline">¶</a></h1>
+<p>A classe de Manipulação de Imagens do CodeIgniter permite executar as seguintes ações com imagens:</p>
+<ul class="simple">
+<li>Redimensionamento</li>
+<li>Criação de miniaturas (thumbnails)</li>
+<li>Corte (cropping)</li>
+<li>Rotação</li>
+<li>Inserção de marca d'água (watermarking)</li>
+</ul>
+<p>As três principais bibliotecas de imagens são suportadas: GD/GD2, NetPBM e 
+ImageMagick.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">A criação de marcas d'água apenas está disponível quando usada a biblioteca GD/GD2. 
+Mesmo que outras bibliotecas sejam suportadas, a GD é necessária para o cálculo de propriedades da imagem. O 
+processamento da imagem, entretanto, poderá ser realizado em qualquer outra biblioteca suportada.
+</p>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#initializing-the-class" id="id1">Inicializando a classe</a><ul>
+<li><a class="reference internal" href="#processing-an-image" id="id2">Processando uma imagem</a></li>
+<li><a class="reference internal" href="#processing-methods" id="id3">Métodos de processamento</a></li>
+<li><a class="reference internal" href="#preferences" id="id4">Preferências</a></li>
+<li><a class="reference internal" href="#setting-preferences-in-a-config-file" id="id5">Definindo as preferências em um arquivo de configuração</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-watermarking" id="id6">Inserção de Marcas d’água</a><ul>
+<li><a class="reference internal" href="#two-types-of-watermarking" id="id7">Dois tipos de marcas d'água</a></li>
+<li><a class="reference internal" href="#watermarking-an-image" id="id8">Inserindo marca d'água em uma imagem</a></li>
+<li><a class="reference internal" href="#watermarking-preferences" id="id9">Preferências de marca d'água</a><ul>
+<li><a class="reference internal" href="#text-preferences" id="id10">Preferências de texto</a></li>
+<li><a class="reference internal" href="#overlay-preferences" id="id11">Preferências de sobreposição</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#class-reference" id="id12">Referência de Classe</a></li>
+</ul>
+</div>
+<div class="custom-index container"></div><div class="section" id="initializing-the-class">
+<h2><a class="toc-backref" href="#id1">Inicializando a Classe</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h2>
+<p>Assim como a maioria das outras classes no CodeIgniter, a classe Image é inicializada
+em seu controller usando o método <em>$this-&gt;load-&gt;library</em>:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;image_lib&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Uma vez que a biblioteca esteja carregada, ela estará pronta para o uso. 
+O objeto da biblioteca de imagens que você utilizará para chamar todas as funções é: <tt class="docutils literal"><span class="pre">$this-&gt;image_lib</span></tt></p>
+<div class="section" id="processing-an-image">
+<h3><a class="toc-backref" href="#id2">Processando uma imagem</a><a class="headerlink" href="#processing-an-image" title="Permalink to this headline">¶</a></h3>
+<p>Independentemente do tipo de processamento que você pretenda realizar 
+(redimensionar, cortar, girar ou inserir marca d’água), o processo geral é o mesmo. 
+Você definirá algumas preferências de acordo com a ação que você pretende executar e, então, 
+chamará um dos quatro métodos de processamento disponíveis. 
+Por exemplo, para criar uma miniatura de uma imagem, você deverá fazer assim:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;image_library&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gd2&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;source_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/image/mypic.jpg&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;create_thumb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;maintain_ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="mi">75</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;image_lib&#39;</span><span class="p">,</span> <span class="nv">$config</span><span class="p">);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">resize</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>
+O código acima informa ao método de redimensionamento de imagem para que procure 
+por uma imagem chamada <em>mypic.jpg</em>, localizada no diretório <em>source_image</em>, e crie uma miniatura de 
+75 x 50 pixels usando a biblioteca GD2. A opção <em>maintain_ratio</em> habilitada garante que a miniatura 
+será criada com a maior proximidade possível às dimensões definidas, no entanto, deverá 
+preservar as proporções da imagem original. A miniatura será chamada <em>mypic_thumb.jpg</em> e 
+será armazenada no mesmo diretório que <em>source_image</em>.
+</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para que a classe de manipulação de imagens realize o processamento, 
+o diretório onde serão armazenadas as imagens deve possuir permissão de escrita.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">O processamento de imagens pode demandar uma quantidade considerável de memória do 
+servidor para algumas operações. Caso se depare com erros de estouro de memória enquanto realiza o processamento, 
+talvez seja necessário limitar o tamanho máximo das imagens e/ou ajustar os limites de memória do PHP.</p>
+</div>
+</div>
+<div class="section" id="processing-methods">
+<h3><a class="toc-backref" href="#id3">Métodos de Processamento</a><a class="headerlink" href="#processing-methods" title="Permalink to this headline">¶</a></h3>
+<p>Existem quatro métodos de processamento disponíveis:</p>
+<ul class="simple">
+<li>$this-&gt;image_lib-&gt;resize()</li>
+<li>$this-&gt;image_lib-&gt;crop()</li>
+<li>$this-&gt;image_lib-&gt;rotate()</li>
+<li>$this-&gt;image_lib-&gt;watermark()</li>
+</ul>
+<p>Os métodos retornam o valor booleano TRUE em caso de sucesso e FALSE em caso de falha. 
+Em caso de falha, você pode obter a mensagem de erro usando esta função:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">display_errors</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Uma boa prática é usar o método de processamento dentro de uma estrutura condicional, mostrando um erro em caso de falha:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">resize</span><span class="p">())</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">display_errors</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Opcionalmente, você pode especificar a formatação HTML para ser aplicada aos erros. 
+Para isso, forneça as tags de abertura e fechamento como parâmetros:</p>
+<div class="last highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">display_errors</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="preferences">
+<span id="processing-preferences"></span><h3><a class="toc-backref" href="#id4">Preferências</a><a class="headerlink" href="#preferences" title="Permalink to this headline">¶</a></h3>
+<p>As preferências abaixo descritas permitem adequar o processamento de imagens às suas necessidades.</p>
+<p>
+Perceba que nem todas as preferências estão disponíveis para cada função. 
+Por exemplo, as preferências de eixo x/y estão disponíveis apenas para o recurso de corte da imagem. 
+Da mesma forma, as preferências de largura e altura não tem qualquer efeito na função de corte. 
+Na tabela a seguir, a coluna &#8220;disponibilidade&#8221; indica quais funções suportam cada definição de preferência.
+</p>
+<p>Legenda da disponibilidade:</p>
+<ul class="simple">
+<li>R – Redimensionamento</li>
+<li>C – Corte</li>
+<li>X – Rotação</li>
+<li>W – Marca d’água</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="19%" />
+<col width="45%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Preferência</th>
+<th class="head">Valor Padrão</th>
+<th class="head">Opções</th>
+<th class="head">Descrição</th>
+<th class="head">Disponibilidade</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>image_library</strong></td>
+<td>GD2</td>
+<td>GD, GD2, ImageMagick, NetPBM</td>
+<td>Define a biblioteca de manipulação de imagens a ser utilizada.</td>
+<td>R, C, X, W</td>
+</tr>
+<tr class="row-odd"><td><strong>library_path</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define o caminho para as bibliotecas ImageMagick ou NetPBM. 
+Caso utilize uma destas bibliotecas, você necessitará fornecer o caminho da instalação.</td>
+<td>R, C, X
+R, C, S, W</td>
+</tr>
+<tr class="row-even"><td><strong>source_image</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define o nome e caminho para onde o arquivo da imagem de origem está armazenada. 
+O caminho deve ser relativo ou absoluto e não uma URL.</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>dynamic_output</strong></td>
+<td>FALSE</td>
+<td>TRUE/FALSE (boolean)</td>
+<td>Determina se o novo arquivo de imagem deve ser escrito no disco ou gerado dinamicamente. 
+Nota: caso escolha a opção “dinâmica”, apenas uma imagem poderá ser gerada por vez e esta
+imagem não poderá ser posicionada na página. A imagem de saída será direcionada 
+automaticamente ao navegador, juntamente com os cabeçalhos apropriados.</td>
+<td>R, C, X, W</td>
+</tr>
+<tr class="row-even"><td><strong>file_permissions</strong></td>
+<td>0644</td>
+<td>(integer)</td>
+<td>Nível de permissão a ser aplicada aos arquivos escritos em disco gerados após o processamento da imagem.  
+ATENÇÃO: Utilize a notação octal!</td>
+<td>R, C, X, W</td>
+</tr>
+<tr class="row-odd"><td><strong>quality</strong></td>
+<td>90%</td>
+<td>1 - 100%</td>
+<td>Define a qualidade da imagem. Quanto maior a qualidade, maior também será o tamanho do arquivo.</td>
+<td>R, C, X, W</td>
+</tr>
+<tr class="row-even"><td><strong>new_image</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define o nome e caminho onde será escrita a imagem resultado do processamento. 
+Você utilizará esta preferência quando criar uma imagem cópia. 
+O caminho deve ser absoluto ou relativo e não uma URL. </td>
+<td>R, C, X, W</td>
+</tr>
+<tr class="row-odd"><td><strong>width</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define a largura esperada para a imagem de saída.</td>
+<td>R, C</td>
+</tr>
+<tr class="row-even"><td><strong>height</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define a altura esperada para a imagem de saída.</td>
+<td>R, C</td>
+</tr>
+<tr class="row-odd"><td><strong>create_thumb</strong></td>
+<td>FALSE</td>
+<td>TRUE/FALSE (boolean)</td>
+<td>Informa ao método de processamento de imagem para que crie uma miniatura.</td>
+<td>R</td>
+</tr>
+<tr class="row-even"><td><strong>thumb_marker</strong></td>
+<td>_thumb</td>
+<td>Nenhum</td>
+<td>Especifica a sequência de caracteres indicadora da miniatura. 
+Ela será inserida logo após à extensão do arquivo. Logo, mypic.jpg se tornará mypic_thumb.jpg</td>
+<td>R</td>
+</tr>
+<tr class="row-odd"><td><strong>maintain_ratio</strong></td>
+<td>TRUE</td>
+<td>TRUE/FALSE (boolean)</td>
+<td>Especifica se deverá ser mantida a proporção original da imagem quando redimensionada ou se 
+os valores de altura e largura deverão ser seguidos com rigor.</td>
+<td>R, C</td>
+</tr>
+<tr class="row-even"><td><strong>master_dim</strong></td>
+<td>auto</td>
+<td>auto, width, height</td>
+<td>
+Especifica qual será o eixo principal quando redimensionando ou criando miniaturas 
+para a imagem. Por exemplo, digamos que você redimensione uma imagem para 100 x 75 pixels. 
+Se as dimensões da imagem original não permitirem um perfeito redimensionamento a estas 
+dimensões, esta preferência determina qual eixo deverá ser usado como o valor absoluto. 
+A opção &#8220;auto&#8221; determina o eixo automaticamente, baseado em qual dimensão é maior 
+(largura ou altura).
+</td>
+<td>R</td>
+</tr>
+<tr class="row-odd"><td><strong>rotation_angle</strong></td>
+<td>Nenhum</td>
+<td>90, 180, 270, vrt, hor</td>
+<td>Determina o ângulo de rotação. Note que o PHP realiza a rotação no sentido anti-horário, 
+então uma rotação de 90 graus para a direita deve ser especificada como 270 graus.</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td><strong>x_axis</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define a coordenada X, em pixels, para o corte da imagem. Por exemplo, uma definição com o 
+valor &#8220;30&#8221; irá cortar a imagem com uma borda interna de 30 pixels à esquerda.</td>
+<td>C</td>
+</tr>
+<tr class="row-odd"><td><strong>y_axis</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define a coordenada Y, em pixels, para o corte da imagem. Por exemplo, uma definição com o 
+valor &#8220;30&#8221; irá cortar a imagem com uma borda interna de 30 pixels a partir do topo.</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="setting-preferences-in-a-config-file">
+<h3><a class="toc-backref" href="#id5">Definindo preferências em um arquivo de configuração</a><a class="headerlink" href="#setting-preferences-in-a-config-file" title="Permalink to this headline">¶</a></h3>
+<p>
+Caso prefira não definir preferências utilizando o método acima, você poderá colocá-las em 
+um arquivo de configuração. Simplesmente crie um novo arquivo chamado image_lib.php e 
+adicione o array <em>$config</em> neste arquivo. Armazene o arquivo em <em>/config/image_lib.php</em> e ele 
+será reconhecido automaticamente. Você não necessitará utilizar o método 
+<tt class="docutils literal"><span class="pre">$this-&gt;image_lib-&gt;initialize()</span></tt> caso guarde as preferências em um arquivo de configuração.
+</p>
+</div>
+</div>
+<div class="section" id="image-watermarking">
+<h2><a class="toc-backref" href="#id6">Inserção de Marcas d’água</a><a class="headerlink" href="#image-watermarking" title="Permalink to this headline">¶</a></h2>
+<p>O recurso de marcas d’água requer as bibliotecas GD/GD2.</p>
+<div class="section" id="two-types-of-watermarking">
+<h3><a class="toc-backref" href="#id7">Dois tipos de marcas d’água</a><a class="headerlink" href="#two-types-of-watermarking" title="Permalink to this headline">¶</a></h3>
+<p>Existem dois tipos de marcas d’água que você poderá utilizar:</p>
+<ul class="simple">
+<li><strong>Texto</strong>: a marca d’água será gerada usando texto, com uma fonte True Type 
+definida por você ou utilizando texto nativo de saída suportado pela biblioteca GD. 
+Caso utilize a versão True Type, sua instalação da biblioteca GD deverá ser compilada com a 
+opção de suporte a True Type (geralmente esta opção é habilitada por padrão, porém não sempre).</li>
+<li><strong>Sobreposição</strong>: a marca d’água será gerada pela sobreposição de uma imagem 
+em relação à outra. Geralmente, um PNG ou GIF transparente contém a marca d’água que será 
+impressa sobre a imagem a ser processada.</li>
+</ul>
+</div>
+<div class="section" id="watermarking-an-image">
+<span id="watermarking"></span><h3><a class="toc-backref" href="#id8">Inserindo uma marca d’água</a><a class="headerlink" href="#watermarking-an-image" title="Permalink to this headline">¶</a></h3>
+<p>Assim como os outros métodos (redimensionamento, corte e rotação), o processo geral 
+para a inserção de marcas d’água envolve a definição de preferências de acordo com a ação 
+que você pretende realizar e, posteriormente, a chamada ao método de criação de marca d’água. 
+Aqui está um exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;source_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/image/mypic.jpg&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2006 - John Doe&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;text&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_font_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;./system/fonts/texb.ttf&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_font_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;16&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_font_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ffffff&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_vrt_alignment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_hor_alignment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;wm_padding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;20&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">watermark</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>O exemplo acima utilizará uma fonte True Type de 16 pixels para criar o texto 
+&#8220;Copyright 2006 - John Doe&#8221;. A marca d’água será posicionada à base e ao centro da imagem, 
+20 pixels acima da borda inferior.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para que a classe de imagem esteja apta a realizar o processamento, o arquivo 
+da imagem deverá possuir permissão de escrita. Por exemplo, 777.</p>
+</div>
+</div>
+<div class="section" id="watermarking-preferences">
+<h3><a class="toc-backref" href="#id9">Preferências de Marca d’Água</a><a class="headerlink" href="#watermarking-preferences" title="Permalink to this headline">¶</a></h3>
+<p>Esta tabela exibe as preferências que estão disponíveis 
+para ambos os tipos de marcas d’água (texto e sobreposição):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="14%" />
+<col width="17%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Preferência</th>
+<th class="head">Valor Padrão</th>
+<th class="head">Opções</th>
+<th class="head">Descrição</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>wm_type</strong></td>
+<td>text</td>
+<td>text, overlay</td>
+<td>Define o tipo de marca d’água que deverá ser utilizado.</td>
+</tr>
+<tr class="row-odd"><td><strong>source_image</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>Define o caminho e nome para o arquivo de origem. 
+O caminho deve ser relativo ou absoluto, não uma URL.</td>
+</tr>
+<tr class="row-even"><td><strong>dynamic_output</strong></td>
+<td>FALSE</td>
+<td>TRUE/FALSE (boolean)</td>
+<td>Determina se o novo arquivo de imagem deve ser escrito no disco ou gerado dinamicamente. 
+Nota: caso escolha a opção &#8220;dinâmica&#8221;, apenas uma imagem poderá ser gerada por vez e esta
+imagem não poderá ser posicionada na página. A imagem de saída será direcionada 
+automaticamente ao navegador, juntamente com os cabeçalhos apropriados.</td>
+</tr>
+<tr class="row-odd"><td><strong>quality</strong></td>
+<td>90%</td>
+<td>1 - 100%</td>
+<td>Define a qualidade da imagem. Quanto maior a qualidade, maior o tamanho do arquivo.</td>
+</tr>
+<tr class="row-even"><td><strong>wm_padding</strong></td>
+<td>Nenhum</td>
+<td>Um número</td>
+<td>A quantidade de preenchimento, definida em pixels, que será aplicada à 
+marca d’água para afastá-la das bordas da imagem.</td>
+</tr>
+<tr class="row-odd"><td><strong>wm_vrt_alignment</strong></td>
+<td>bottom</td>
+<td>top, middle, bottom</td>
+<td>Define o alinhamento vertical para a imagem da marca d’água.</td>
+</tr>
+<tr class="row-even"><td><strong>wm_hor_alignment</strong></td>
+<td>center</td>
+<td>left, center, right</td>
+<td>Define o alinhamento horizontal para a imagem da marca d’água.</td>
+</tr>
+<tr class="row-odd"><td><strong>wm_hor_offset</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>
+Você pode especificar um deslocamento horizontal, em pixels, a ser aplicado à 
+posição da marca d’água. Normalmente, o deslocamento move a marca d’água para a direita, 
+exceto caso você tenha o seu alinhamento definido para &#8220;right&#8221;, o que fará com que o valor 
+do deslocamento desloque a marca d´água para a esquerda. 
+</td>
+</tr>
+<tr class="row-even"><td><strong>wm_vrt_offset</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>
+Você pode especificar um deslocamento vertical, em pixels, a ser aplicado à posição da 
+marca d’água. Normalmente, o deslocamento move a marca d’água para baixo, exceto caso você 
+tenha o seu alinhamento definido para &#8220;bottom&#8221;, o que fará com que o valor do deslocamento 
+desloque a marca d´água para cima.
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="text-preferences">
+<h4><a class="toc-backref" href="#id10">Preferências de texto</a><a class="headerlink" href="#text-preferences" title="Permalink to this headline">¶</a></h4>
+<p>Esta tabela mostra as preferências que estão disponíveis para as marcas d’água do tipo texto:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="14%" />
+<col width="14%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Preferência</th>
+<th class="head">Valor Padrão</th>
+<th class="head">Opções</th>
+<th class="head">Descrição</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>wm_text</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>O texto que você gostaria de exibir como marca d’água. 
+Tipicamente, uma informação sobre direitos autorais.</td>
+</tr>
+<tr class="row-odd"><td><strong>wm_font_path</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>O caminho no servidor para a fonte True Type que você gostaria de utilizar. 
+Caso você não defina esta preferência, a fonte nativa da biblioteca GD será utilizada.</td>
+</tr>
+<tr class="row-even"><td><strong>wm_font_size</strong></td>
+<td>16</td>
+<td>Nenhum</td>
+<td>O tamanho do texto. Nota: caso você não esteja usando a opção True Type acima, o número  é definido usando um intervalo entre 1 e 5. Caso contrário,
+você pode usar qualquer tamanho de pixels válido para a fonte que você está utilizando.</td>
+</tr>
+<tr class="row-odd"><td><strong>wm_font_color</strong></td>
+<td>ffffff</td>
+<td>Nenhum</td>
+<td>A cor da fonte, especificada em hexadecimais. É possível informar esta opção com seis caracteres 
+(por exemplo, 993300) ou, abreviadamente, com três caracteres (por exemplo, fff).</td>
+</tr>
+<tr class="row-even"><td><strong>wm_shadow_color</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>A cor da sombra, especificada em hexadecimais. Caso deixe esta opção em branco, 
+nenhuma sombra será utilizada. É possível informar esta opção com seis caracteres 
+(por exemplo, 993300) ou, abreviadamente, com três caracteres (por exemplo, fff).</td>
+</tr>
+<tr class="row-odd"><td><strong>wm_shadow_distance</strong></td>
+<td>3</td>
+<td>Nenhum</td>
+<td>A distância, em pixels, entre a fonte e a sombra.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="overlay-preferences">
+<h4><a class="toc-backref" href="#id11">Preferências de Sobreposição</a><a class="headerlink" href="#overlay-preferences" title="Permalink to this headline">¶</a></h4>
+<p>Esta tabela mostra as preferências que estão disponíveis para a marca d’água do tipo sobreposição:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="14%" />
+<col width="14%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Preferência</th>
+<th class="head">Valor Padrão</th>
+<th class="head">Opções</th>
+<th class="head">Descrição</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>wm_overlay_path</strong></td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+<td>O caminho no servidor para a imagem que você deseja utilizar 
+como marca d’água. Obrigatório apenas caso esteja usando o método de sobreposição.</td>
+</tr>
+<tr class="row-odd"><td><strong>wm_opacity</strong></td>
+<td>50</td>
+<td>1 - 100</td>
+<td>A opacidade da imagem. Você pode especificar a transparência da imagem da marca d’água. 
+Esta opção permite que a marca d’água não seja tão escura a ponto de impedir a visualização 
+de detalhes da imagem original que está por baixo dela. Um valor comum para a 
+opacidade é 50%.</td>
+</tr>
+<tr class="row-even"><td><strong>wm_x_transp</strong></td>
+<td>4</td>
+<td>Um número</td>
+<td>
+Caso você esteja inserindo marca d’água em uma imagem PNG ou GIF, você deve especificar 
+uma cor na imagem para ser &#8220;transparente&#8221;. Esta opção, em conjunto com a que está a seguir, 
+permitirá que você especifique esta cor. Funciona assim: você especifica as 
+coordenadas &#8220;X&#8221; e &#8220;Y&#8221;, medidas a partir do canto superior esquerdo da imagem, do pixel 
+que contém a cor que você pretende que seja transparente.</td>
+</tr>
+<tr class="row-odd"><td><strong>wm_y_transp</strong></td>
+<td>4</td>
+<td>Um número</td>
+<td>Em conjunto com a configuração anterior, esta opção permite definir a coordenada do pixel que 
+representa a cor que você pretende que seja transparente.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="class-reference">
+<h2><a class="toc-backref" href="#id12">Referência de Classe</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="CI_Image_lib">
+<em class="property">classe </em><tt class="descname">CI_Image_lib</tt><a class="headerlink" href="#CI_Image_lib" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="CI_Image_lib::initialize">
+<tt class="descname">initialize</tt><big>(</big><span class="optional">[</span><em>$props = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Image_lib::initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$props</strong> (<em>array</em>) &#8211; Preferências do processamento de imagem</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">TRUE em caso de sucesso, FALSE em caso de configurações inválidas.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Inicializa a classe para o processamento de uma imagem.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Image_lib::resize">
+<tt class="descname">resize</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::resize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">TRUE em sucesso, FALSE em falha.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<p>O método de redimensionamento de imagem permite que você redimensione a imagem original, 
+crie uma cópia (com ou sem redimensionamento) ou uma miniatura da imagem.</p>
+<p>Para propósitos práticos, não há diferença entre criar uma cópia e criar uma miniatura, 
+exceto que a miniatura terá uma string indicadora concatenada como parte de seu nome (por exemplo, 
+<em>mypic_thumb.jpg</em>).</p>
+<p>Todas as preferências listadas na tabela de preferências estão disponíveis para este método, exceto
+três: <em>rotation_angle</em>, <em>x_axis</em> e <em>y_axis</em>.</p>
+<p><strong>Criando uma miniatura</strong></p>
+<p>O método de redimensionamento criará um arquivo de miniatura (e preservará o original) 
+caso você defina esta preferência para TRUE:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;create_thumb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Esta preferência determina se uma miniatura é criada ou não.</p>
+<p><strong>Criando uma cópia</strong></p>
+<p>O método de redimensionamento irá criar uma cópia do arquivo da imagem (e preservar o original) 
+caso você defina um caminho e/ou um novo nome para o arquivo usando esta preferência:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;new_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/new_image.jpg&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Notas sobre essa preferência:</p>
+<ul class="simple">
+<li>Caso somente o nome da nova imagem seja especificado, a imagem gerada será 
+armazenada no mesmo diretório da original;</li>
+<li>Caso somente o caminho seja especificado, a nova imagem será armazenada no destino 
+com o mesmo nome da original;</li>
+<li>Caso sejam especificados o caminho e o nome, a nova imagem será armazenada no caminho 
+especificado e receberá o nome, conforme escolhido.</li>
+</ul>
+<p><strong>Redimensionando a imagem original</strong></p>
+<p>Caso nenhuma das opções acima descritas (create_thumb e new_image) 
+seja utilizada, o método de redimensionamento irá processar o arquivo da imagem 
+original e substituí-lo pela nova imagem.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Image_lib::crop">
+<tt class="descname">crop</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::crop" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">TRUE em sucesso, FALSE em falha</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<p>O método de corte funciona de maneira muito semelhante ao método de redimensionamento, 
+exceto pelo fato de exigir que você defina as preferências 
+para os eixos X e Y, em pixels, especificando o ponto de corte:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;x_axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;y_axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Todas as preferências listadas na tabela de <a class="reference internal" href="#processing-preferences"><em>Preferências</em></a> estão disponíveis para este método, 
+exceto <em>rotation_angle</em>, <em>create_thumb</em> e <em>new_image</em>.</p>
+<p>Aqui está um exemplo mostrando como cortar uma imagem:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;image_library&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;imagemagick&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;library_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/usr/X11R6/bin/&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;source_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/image/mypic.jpg&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;x_axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;y_axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">crop</span><span class="p">())</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">display_errors</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Sem uma interface visual, é muito difícil cortar uma imagem. A utilidade desta 
+função é nula, exceto caso você tenha em mente construir tal interface. Foi exatamente isso que nós 
+fizemos no módulo de galeria de fotos do ExpressionEngine, o sistema gerenciador de conteúdo 
+que nós desenvolvemos. Nós adicionamos uma interface gráfica para o usuário, construída em 
+Javascript, que permite a seleção da área a ser cortada.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Image_lib::rotate">
+<tt class="descname">rotate</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::rotate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">TRUE em sucesso, FALSE em falha.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<p>O método de rotação de imagem exige que o ângulo da rotação seja definido nas preferências:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;rotation_angle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;90&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Existem cinco opções de rotação:</p>
+<ol class="arabic simple">
+<li>90 – Rotação em 90 graus anti-horário;</li>
+<li>180 – Rotação em 180 graus anti-horário;</li>
+<li>270 – Rotação em 270 graus anti-horário;</li>
+<li>hor – Inverte a imagem horizontalmente;</li>
+<li>vrt – Inverte a imagem verticalmente.</li>
+</ol>
+<p>Aqui está um exemplo mostrando como você pode fazer a rotação de uma imagem:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;image_library&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;netpbm&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;library_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/usr/bin/&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;source_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/image/mypic.jpg&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;rotation_angle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;hor&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">rotate</span><span class="p">())</span>
+<span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">display_errors</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Image_lib::watermark">
+<tt class="descname">watermark</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::watermark" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">TRUE em sucesso, FALSE em falha</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<p>Cria uma marca d’água sobre uma imagem. Por gentileza, veja a seção 
+<a class="reference internal" href="#watermarking"><em>Inserindo uma marca d’água</em></a> para mais detalhes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Image_lib::clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::clear" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<p>O método “clear” redefine todos os valores usados no processamento de imagens. 
+Você deverá invocá-lo caso esteja processando imagens dentro de um loop.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Image_lib::display_errors">
+<tt class="descname">display_errors</tt><big>(</big><span class="optional">[</span><em>$open = '&lt;p&gt;</em><span class="optional">[</span>, <em>$close = '&lt;/p&gt;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Image_lib::display_errors" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>$open</strong> (<em>string</em>) &#8211; Tag de abertura da mensagem de erro</li>
+<li><strong>$close</strong> (<em>string</em>) &#8211; Tag de fechamento da mensagem de erro</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Mensagens de erro</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retorna todos os erros detectados, formatados como uma string.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image_lib</span><span class="o">-&gt;</span><span class="na">display_errors</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="input.html" class="btn btn-neutral float-right" title="Classe de Entrada">Próximo <span class="fa fa-arrow-circle-right"></span></a>
+
+
+        <a href="ftp.html" class="btn btn-neutral" title="Classe de FTP"><span class="fa fa-arrow-circle-left"></span> Anterior</a>
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2016, British Columbia Institute of Technology.
+      Última atualização em 26 de julho de 2016.
+    </p>
+  </div>
+
+  Construído com <a href="http://sphinx-doc.org/">Sphinx</a> usando um <a href="https://github.com/snide/sphinx_rtd_theme">tema</a> fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+
+
+</body>
+</html>
